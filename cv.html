@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashis Mahanta | CV</title>
+  <style>
+    :root { --navy:#101d31; --blue:#2878e8; --ink:#172943; --muted:#52647b; --pale:#eaf2ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:28px; background:#e9edf4; color:var(--ink); font:15px/1.55 Arial, sans-serif; }
+    .actions { max-width:1000px; margin:0 auto 14px; display:flex; justify-content:flex-end; gap:10px; }
+    .actions button { border:0; border-radius:8px; padding:10px 15px; background:var(--blue); color:#fff; cursor:pointer; font-weight:700; }
+    .cv { max-width:1000px; margin:auto; display:grid; grid-template-columns:31% 69%; background:#fff; box-shadow:0 12px 40px #17294320; }
+    aside { background:linear-gradient(160deg,#14243b,#0c1728); color:#edf5ff; padding:30px 25px; }
+    main { padding:30px 32px; min-width:0; }
+    .photo { width:145px; height:145px; border:3px solid #8dc4ff; border-radius:50%; margin:0 auto 25px; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px; color:#c8d8ee; background:#233750; font-size:13px; }
+    h1 { margin:0; font-size:38px; line-height:1.15; letter-spacing:-1px; }
+    h1 span { color:var(--blue); }
+    .subtitle { margin:8px 0 2px; color:#425b7b; font-weight:700; letter-spacing:1.5px; font-size:13px; }
+    .tagline { margin:0 0 22px; color:#53739b; }
+    h2 { font-size:17px; margin:25px 0 10px; padding-bottom:7px; border-bottom:2px solid var(--blue); color:#17365d; }
+    aside h2 { color:#d9eaff; border-color:#5ca5ff; }
+    h3 { font-size:15px; margin:12px 0 3px; }
+    p { margin:6px 0 10px; }
+    .muted { color:var(--muted); }
+    aside .muted { color:#c2d2e7; }
+    .detail { margin:8px 0; overflow-wrap:anywhere; }
+    .detail strong { color:#fff; }
+    .item { margin:12px 0 16px; }
+    .pill-list { display:flex; flex-wrap:wrap; gap:8px; }
+    .pill { background:var(--pale); border:1px solid #d5e5ff; border-radius:8px; padding:6px 11px; color:#174b91; font-size:13px; }
+    .score-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .score-table th,.score-table td { border:1px solid #d6e3f3; text-align:left; padding:9px 8px; vertical-align:top; }
+    .score-table th { background:#eaf3ff; }
+    .note { font-size:12px; color:#697b91; }
+    .quote { margin-top:30px; border-top:1px solid #6389b2; padding-top:18px; text-align:center; font-style:italic; color:#cbdcf0; }
+    .signature { margin-top:25px; padding-top:10px; border-top:1px solid #b9c9df; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:13px; }
+    [contenteditable="true"] { outline:1px dashed transparent; border-radius:3px; }
+    [contenteditable="true"]:focus { outline-color:#2878e8; background:#f1f7ff; }
+    @media(max-width:720px) { body { padding:10px; } .cv { grid-template-columns:1fr; } aside,main { padding:24px 20px; } h1 { font-size:32px; } .photo { width:120px;height:120px; } }
+    @media print { body { padding:0; background:#fff; } .actions { display:none; } .cv { box-shadow:none; max-width:none; } aside { print-color-adjust:exact; -webkit-print-color-adjust:exact; } .pill,.score-table th { print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+  </style>
+</head>
+<body>
+  <div class="actions"><button onclick="window.print()">Print / Save as PDF</button></div>
+  <div class="cv">
+    <aside>
+      <div class="photo" contenteditable="true" title="Replace this with your own photo later">ADD YOUR<br>PHOTO HERE</div>
+      <h2>PERSONAL DETAILS</h2>
+      <p class="detail"><strong>Full name:</strong> <span contenteditable="true">Ashis Mahanta</span></p>
+      <p class="detail"><strong>Date of birth:</strong> <span contenteditable="true">Add your correct date of birth</span></p>
+      <p class="detail"><strong>Age:</strong> <span contenteditable="true">Update age</span></p>
+      <p class="detail"><strong>Location:</strong> <span contenteditable="true">Rourkela, Odisha</span></p>
+      <p class="detail"><strong>Phone:</strong> <span contenteditable="true">Add phone number (optional)</span></p>
+      <p class="detail"><strong>Email:</strong> <span contenteditable="true">Add professional email</span></p>
+      <h2>EDUCATION</h2>
+      <div class="item"><h3 contenteditable="true">B.Com (HR Operations and Commerce)</h3><p class="muted" contenteditable="true">2026–2029 · Currently pursuing<br>Government Autonomous College, Rourkela<br>Sambalpur University</p></div>
+      <div class="item"><h3>+2 Commerce</h3><p class="muted" contenteditable="true">2023–2025<br>CHSE Odisha<br>528 / 600 (88%)</p></div>
+      <div class="item"><h3>10th / High School</h3><p class="muted" contenteditable="true">Add school name, passing year, board and exact marks</p></div>
+      <h2>ACHIEVEMENTS</h2>
+      <ul class="muted" contenteditable="true"><li>Scored 88% in +2 Commerce</li><li>Recognised in local newspaper for +2 Commerce result (confirm wording before publishing)</li></ul>
+      <p class="quote" contenteditable="true">“Small steps every day lead to big dreams.”</p>
+    </aside>
+    <main>
+      <h1>Ashis <span>Mahanta</span></h1>
+      <p class="subtitle" contenteditable="true">B.COM STUDENT | ASPIRING WEB DEVELOPER</p>
+      <p class="tagline" contenteditable="true">Learning Today · Building Tomorrow</p>
+      <h2>ABOUT ME</h2>
+      <p contenteditable="true">I am a commerce student exploring technology, coding, and web development. I enjoy learning new skills by building practical projects and solving problems. I am interested in combining my commerce background with technology and continuing to develop my skills.</p>
+      <h2>ACADEMIC PERFORMANCE</h2>
+      <table class="score-table"><thead><tr><th>Qualification</th><th>Year</th><th>Board / University</th><th>Marks / Status</th></tr></thead><tbody>
+        <tr><td contenteditable="true">B.Com (HR Operations and Commerce)</td><td contenteditable="true">2026–2029</td><td contenteditable="true">Sambalpur University</td><td>Currently pursuing</td></tr>
+        <tr><td>+2 Commerce</td><td>2023–2025</td><td>CHSE Odisha</td><td>528 / 600 (88%)</td></tr>
+        <tr><td>10th / High School</td><td contenteditable="true">Add year</td><td contenteditable="true">Add board</td><td contenteditable="true">Add exact marks</td></tr>
+      </tbody></table>
+      <h2>SKILLS</h2>
+      <div class="pill-list"><span class="pill" contenteditable="true">HTML</span><span class="pill" contenteditable="true">CSS</span><span class="pill" contenteditable="true">JavaScript (Learning)</span><span class="pill" contenteditable="true">Problem Solving</span><span class="pill" contenteditable="true">Communication</span><span class="pill" contenteditable="true">Teamwork</span><span class="pill" contenteditable="true">Time Management</span></div>
+      <h2>PROJECTS</h2>
+      <div class="item"><h3 contenteditable="true">Personal Portfolio Website</h3><p class="muted" contenteditable="true">HTML · CSS</p><p contenteditable="true">A personal website showcasing my background, skills and projects. Built with a responsive dark design.</p></div>
+      <div class="item"><h3 contenteditable="true">Next Project</h3><p class="muted" contenteditable="true">Planned / In progress</p><p contenteditable="true">Add a short description only after you start building the project.</p></div>
+      <h2>INTERESTS</h2>
+      <p contenteditable="true">Web Development · Finance and Commerce · Reading · Technology</p>
+      <h2>CAREER GOALS</h2>
+      <ul contenteditable="true"><li>Build practical skills in web development and technology.</li><li>Gain experience through projects and internships.</li><li>Continue learning and growing professionally.</li></ul>
+      <div class="signature"><span contenteditable="true">Ashis Mahanta</span><span>Date: <span contenteditable="true">Add date if needed</span></span></div>
+      <p class="note">Before publishing, verify every detail and remove any information you do not want public.</p>
+    </main>
+  </div>
+</body>
+</html>
