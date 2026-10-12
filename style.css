@@ -652,3 +652,18 @@ nav a:focus-visible,
 #cv .cv-item p {
     margin: 4px 0;
 }
+
+/* Interactive project card hover effects */
+.project-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.22);
+    border-color: #a855f7;
+}
