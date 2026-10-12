@@ -150,3 +150,467 @@ footer {
     color: #a78bfa;
     text-decoration: none;
 }
+
+/* Portfolio polish — Step 15 */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    line-height: 1.75;
+    letter-spacing: 0.1px;
+}
+
+nav {
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    padding: 18px 24px;
+    background: rgba(17, 17, 27, 0.96);
+    backdrop-filter: blur(12px);
+}
+
+nav a {
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+header#home {
+    min-height: 78vh;
+    padding: 100px 24px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+}
+
+header#home > p:first-child {
+    color: #c4b5fd;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+header#home h1 {
+    max-width: 950px;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    overflow-wrap: anywhere;
+}
+
+header#home h2 {
+    line-height: 1.5;
+    margin: 12px 0;
+}
+
+header#home > p {
+    max-width: 620px;
+    margin: 12px auto;
+}
+
+.main-button {
+    border: 1px solid #a78bfa;
+    box-shadow: 0 8px 28px rgba(139, 92, 246, 0.15);
+    transition: transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.main-button:hover {
+    box-shadow: 0 10px 32px rgba(139, 92, 246, 0.28);
+}
+
+section {
+    width: calc(100% - 40px);
+    margin: 28px auto;
+    padding: 36px;
+    max-width: 900px;
+    scroll-margin-top: 90px;
+}
+
+section h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.project-grid {
+    margin-top: 22px;
+}
+
+.project-card {
+    min-width: 0;
+    transition: transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+}
+
+.project-card p {
+    line-height: 1.8;
+}
+
+footer {
+    margin-top: 55px;
+    border-top: 1px solid #29293a;
+}
+
+@media (max-width: 600px) {
+    nav {
+        gap: 6px 14px;
+        padding: 14px 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    header#home {
+        min-height: 68vh;
+        padding: 75px 20px;
+    }
+
+    header#home h1 {
+        font-size: clamp(32px, 9vw, 46px);
+        letter-spacing: -0.7px;
+    }
+
+    header#home h2 {
+        font-size: 20px;
+    }
+
+    header#home > p:first-child {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    section {
+        width: calc(100% - 28px);
+        margin: 18px auto;
+        padding: 24px 20px;
+        border-radius: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Step 15 - Modern hero redesign */
+
+header#home {
+    min-height: 85vh;
+    padding: 110px 24px 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(124, 58, 237, 0.20),
+            transparent 65%
+        );
+}
+
+header#home h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ffffff, #c4b5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header#home h2 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: #c4b5fd;
+    margin-bottom: 18px;
+}
+
+header#home p {
+    max-width: 620px;
+    color: #b8b8c8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+header#home .main-button {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+header#home .main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+}
+
+/* Step 16 - Typography upgrade */
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, nav a, .main-button {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+header#home h1 {
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+header#home h2 {
+    font-weight: 500;
+    letter-spacing: -0.4px;
+}
+
+header#home p {
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+/* Step 18 - Premium project cards */
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        145deg,
+        #1b1b2b 0%,
+        #13131e 100%
+    );
+    border: 1px solid #34344a;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #8b5cf6,
+        transparent
+    );
+    opacity: 0.6;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: #8b5cf6;
+    box-shadow: 0 16px 38px rgba(109, 40, 217, 0.18);
+}
+
+.project-card h3 {
+    font-size: 21px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.project-card p {
+    color: #b8b8c8;
+    line-height: 1.8;
+}
+
+.project-tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 10px;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 6px;
+    color: #c4b5fd;
+    font-size: 12px;
+}
+
+/* Step 19 - Consistent professional spacing */
+
+section {
+    padding: 42px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    border-radius: 18px;
+}
+
+section h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 22px;
+}
+
+section p {
+    line-height: 1.9;
+}
+
+#skills {
+    padding-bottom: 46px;
+}
+
+#projects {
+    padding-top: 44px;
+    padding-bottom: 44px;
+}
+
+.project-grid {
+    gap: 24px;
+    margin-top: 28px;
+}
+
+footer {
+    padding: 32px 20px;
+    margin-top: 65px;
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 26px 22px;
+        margin-top: 22px;
+        margin-bottom: 22px;
+        border-radius: 15px;
+    }
+
+    section h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .project-grid {
+        gap: 18px;
+        margin-top: 22px;
+    }
+}
+
+/* Step 20 - Modern skills display */
+
+#skills {
+    position: relative;
+    overflow: hidden;
+}
+
+#skills p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+#skills p {
+    font-size: 0;
+}
+
+#skills p::first-line {
+    font-size: 0;
+}
+
+#skills p {
+    color: #c4b5fd;
+}
+
+#skills p span {
+    display: inline-block;
+    font-size: 14px;
+    padding: 9px 15px;
+    border: 1px solid #39304f;
+    border-radius: 8px;
+    background: #1b1929;
+}
+
+/* Step 21 - Individual skill badges */
+
+#skills .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#skills .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    border: 1px solid #49366f;
+    border-radius: 9px;
+    background: linear-gradient(
+        135deg,
+        rgba(139, 92, 246, 0.14),
+        rgba(27, 25, 41, 0.9)
+    );
+    color: #d8ccff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+}
+
+#skills .skill-badge:hover {
+    border-color: #a78bfa;
+    background: rgba(139, 92, 246, 0.22);
+    transform: translateY(-2px);
+}
+
+/* Final polish - Navigation */
+
+nav {
+    border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(139, 92, 246, 0.14);
+    transform: translateY(-1px);
+}
+
+nav a:focus-visible,
+.main-button:focus-visible {
+    outline: 2px solid #c4b5fd;
+    outline-offset: 4px;
+}
