@@ -667,3 +667,58 @@ nav a:focus-visible,
     box-shadow: 0 12px 30px rgba(168, 85, 247, 0.22);
     border-color: #a855f7;
 }
+
+/* Horizontal Education Journey */
+#education .education-track {
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    padding: 24px 8px 32px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+#education .education-card {
+    flex: 0 0 290px;
+    min-width: 0;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+#education .education-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
+    border-color: #a855f7;
+}
+
+#education .education-card p {
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+
+#education .education-track::-webkit-scrollbar {
+    height: 7px;
+}
+
+#education .education-track::-webkit-scrollbar-thumb {
+    background: #a855f7;
+    border-radius: 10px;
+}
+
+#education .education-track::-webkit-scrollbar-track {
+    background: #20202c;
+    border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #education .education-track {
+        scroll-behavior: auto;
+    }
+
+    #education .education-card {
+        transition: none;
+    }
+}
