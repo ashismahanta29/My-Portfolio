@@ -90,7 +90,7 @@
       <h2>🔗 Share a Link</h2>
       <p class="hint">Share a Google Drive or other accessible notes link.</p>
 
-      <form action="https://formspree.io/f/mnpjbkwp"
+      <form action="https://forminit.com/f/5tmq5we196e"
             method="POST">
         <input type="hidden" name="_subject"
                value="Notes link for review">
@@ -128,7 +128,7 @@
         No email field is required.
       </p>
 
-      <form action="https://formspree.io/f/mnpjbkwp"
+      <form action="https://forminit.com/f/5tmq5we196e"
             method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject"
                value="Uploaded notes for review">
