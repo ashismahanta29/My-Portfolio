@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Notes Hub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101018;
+            color: #f5f5f5;
+        }
+
+        header {
+            text-align: center;
+            padding: 45px 20px;
+            background: #1b1930;
+        }
+
+        header h1 {
+            color: #c084fc;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #c9c7d5;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+            padding: 16px;
+            background: #191923;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #c084fc;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 28px 18px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #454052;
+            border-radius: 10px;
+            background: #1b1b27;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .subject {
+            background: #1b1b27;
+            border: 1px solid #343142;
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .subject h2 {
+            color: #c084fc;
+            font-size: 19px;
+        }
+
+        .subject p {
+            color: #c9c7d5;
+            line-height: 1.6;
+        }
+
+        .note-link {
+            display: inline-block;
+            color: #e9d5ff;
+            border: 1px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 9px 13px;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+
+        .note-link:hover {
+            background: #6d28d9;
+        }
+
+        .empty {
+            display: none;
+            color: #c9c7d5;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #aaa6b8;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">My Portfolio</a>
+        <a href="#subjects">Subjects</a>
+    </nav>
+
+    <header>
+        <h1>Student Notes Hub</h1>
+        <p>Notes, study materials and resources — all in one place.</p>
+        <p>Created by a student, for students.</p>
+    </header>
+
+    <main>
+        <h2 id="subjects">B.Com Semester 1</h2>
+        <p>Choose a subject to find its study materials.</p>
+
+        <input
+            class="search"
+            id="search"
+            type="search"
+            placeholder="Search for a subject..."
+            aria-label="Search subjects"
+        >
+
+        <div class="subject-grid" id="subjectGrid">
+
+            <article class="subject">
+                <h2>Organizational Behaviour</h2>
+                <p>OB · Core 1.1</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Principles of Management</h2>
+                <p>Core 1.2</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Introduction to Business Economics</h2>
+                <p>Core 1.3</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Recruitment and Selection</h2>
+                <p>Core 1.4</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Financial Accounting</h2>
+                <p>Core 2.1</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Business Communication</h2>
+                <p>AEC · English</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Environmental Studies</h2>
+                <p>VAC · EVS and Disaster Management</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+        </div>
+
+        <p class="empty" id="empty">No matching subjects found.</p>
+    </main>
+
+    <footer>
+        <p>Student Notes Hub · Made for learning and sharing.</p>
+    </footer>
+
+    <script>
+        const search = document.getElementById("search");
+        const subjects = document.querySelectorAll(".subject");
+        const empty = document.getElementById("empty");
+
+        search.addEventListener("input", function () {
+            const query = search.value.toLowerCase();
+            let visible = 0;
+
+            subjects.forEach(function (subject) {
+                const matches = subject.textContent
+                    .toLowerCase()
+                    .includes(query);
+
+                subject.style.display = matches ? "" : "none";
+
+                if (matches) visible++;
+            });
+
+            empty.style.display = visible ? "none" : "block";
+        });
+    </script>
+
+</body>
+</html>
