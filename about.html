@@ -3,12 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About the Student Notes Hub creator.">
-    <title>About Me | Student Notes Hub</title>
+    <meta name="description" content="Meet Ashis Mahanta, a B.Com (AEDP) student building a student-focused Notes Hub.">
+    <title>About Me | Ashis Mahanta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="notes-portal.css">
+    <style>
+        .about-profile {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 48px);
+            padding: clamp(24px, 5vw, 46px);
+            overflow: hidden;
+            border: 1px solid rgba(183, 165, 255, 0.25);
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(37, 31, 62, 0.94), rgba(16, 19, 32, 0.96) 72%);
+            box-shadow: 0 22px 60px rgba(36, 24, 81, 0.25), inset 0 1px rgba(255, 255, 255, 0.04);
+        }
+        .about-profile::before {
+            position: absolute;
+            top: 0;
+            right: 8%;
+            left: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b99cff, #8bdcf4, transparent);
+            content: "";
+        }
+        .about-photo {
+            display: block;
+            width: clamp(126px, 21vw, 184px);
+            aspect-ratio: 1;
+            object-fit: cover;
+            border: 2px solid rgba(198, 180, 255, 0.65);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(167, 139, 250, 0.07), 0 0 38px rgba(139, 92, 246, 0.27);
+        }
+        .about-intro { min-width: 0; }
+        .about-intro h2 {
+            margin: 0;
+            font-family: "Space Grotesk", Inter, sans-serif;
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            letter-spacing: -0.05em;
+            line-height: 1.15;
+        }
+        .about-role { margin: 9px 0 0; color: #c7b8ff; font-weight: 600; }
+        .about-summary { max-width: 690px; margin: 15px 0 0; color: #c5c4d4; }
+        .about-facts { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+        .about-fact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 11px;
+            border: 1px solid var(--portal-line);
+            border-radius: 9px;
+            background: rgba(10, 11, 19, 0.42);
+            color: #dedbed;
+            font-size: 0.84rem;
+        }
+        .about-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; margin-top: 20px; }
+        .about-card {
+            position: relative;
+            min-width: 0;
+            padding: clamp(21px, 3vw, 27px);
+            overflow: hidden;
+            border: 1px solid var(--portal-line);
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(29, 29, 47, 0.91), rgba(16, 17, 28, 0.9));
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+        }
+        .about-card::before {
+            position: absolute;
+            top: 0;
+            right: 22px;
+            left: 22px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #a78bfa, #7ddff2, transparent);
+            content: "";
+            opacity: 0.7;
+        }
+        .about-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin: 0 0 12px;
+            font-family: "Space Grotesk", Inter, sans-serif;
+            font-size: 1.22rem;
+            letter-spacing: -0.025em;
+        }
+        .about-icon {
+            display: grid;
+            width: 35px;
+            height: 35px;
+            flex: 0 0 35px;
+            place-items: center;
+            border: 1px solid rgba(190, 171, 255, 0.25);
+            border-radius: 10px;
+            background: linear-gradient(145deg, rgba(139, 92, 246, 0.2), rgba(139, 220, 244, 0.08));
+            color: #d6c8ff;
+            font-size: 1rem;
+        }
+        .about-card p { margin: 0; color: var(--portal-muted); font-size: 0.94rem; }
+        .education-name { color: #f1effa !important; font-weight: 600; }
+        .education-meta { margin-top: 5px !important; }
+        .interest-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+        .interest-list li {
+            padding: 6px 10px;
+            border: 1px solid rgba(190, 171, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(126, 93, 211, 0.12);
+            color: #d8d0ee;
+            font-size: 0.82rem;
+        }
+        @media (max-width: 650px) {
+            .about-profile { grid-template-columns: 1fr; justify-items: start; gap: 23px; }
+            .about-photo { width: 132px; }
+            .about-layout { grid-template-columns: 1fr; gap: 13px; }
+        }
+    </style>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
     <nav class="portal-nav" aria-label="Main navigation">
@@ -19,18 +137,65 @@
         <a href="about.html" aria-current="page">About Me</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <header class="portal-hero">
         <div class="portal-hero-inner">
-            <p class="portal-kicker">Student Notes Hub</p>
+            <p class="portal-kicker">A little about me</p>
             <h1>About Me</h1>
-            <p class="portal-hero-copy">This profile section will be updated later.</p>
+            <p class="portal-hero-copy">Commerce, curiosity, and useful resources for learning together.</p>
         </div>
     </header>
+
     <main class="portal-main">
-        <section class="portal-detail-panel" aria-label="About Me placeholder">
-            <p class="portal-detail-intro">More information will be added here in a future update.</p>
-            <p><a class="portal-action" href="index.html">Home</a></p>
+        <section class="about-profile" aria-labelledby="about-name">
+            <img class="about-photo" src="images/ashis.jpg.webp" alt="Ashis Mahanta">
+            <div class="about-intro">
+                <p class="portal-kicker">Student · Notes Hub creator</p>
+                <h2 id="about-name">Hi, I’m Ashis Mahanta</h2>
+                <p class="about-role">B.Com (AEDP) Student</p>
+                <p class="about-summary">I’m a B.Com (AEDP) student at Government Autonomous College, Rourkela, affiliated with Sambalpur University. I’m interested in commerce, business management, accounting, human resources, and technology. Through this website, I aim to organize useful study resources and make learning easier for fellow students.</p>
+                <div class="about-facts" aria-label="Education overview">
+                    <span class="about-fact"><span aria-hidden="true">⌂</span> Government Autonomous College, Rourkela</span>
+                    <span class="about-fact"><span aria-hidden="true">✦</span> Sambalpur University</span>
+                    <span class="about-fact"><span aria-hidden="true">◷</span> 2026–2029</span>
+                </div>
+            </div>
         </section>
+
+        <div class="about-layout">
+            <section class="about-card" aria-labelledby="education-heading">
+                <h2 id="education-heading"><span class="about-icon" aria-hidden="true">▤</span>Education</h2>
+                <p class="education-name">B.Com (AEDP)</p>
+                <p class="education-meta">Government Autonomous College, Rourkela</p>
+                <p class="education-meta">Affiliated with Sambalpur University · 2026–2029</p>
+            </section>
+
+            <section class="about-card" aria-labelledby="interests-heading">
+                <h2 id="interests-heading"><span class="about-icon" aria-hidden="true">✧</span>Areas of Interest</h2>
+                <p>Topics I’m curious about and enjoy learning:</p>
+                <ul class="interest-list">
+                    <li>Commerce</li><li>Accounting</li><li>Business management</li>
+                    <li>Human resource operations</li><li>Technology</li><li>Web development</li><li>Digital learning</li>
+                </ul>
+            </section>
+
+            <section class="about-card" aria-labelledby="building-heading">
+                <h2 id="building-heading"><span class="about-icon" aria-hidden="true">⌘</span>What I’m Building</h2>
+                <p>The Student Notes Hub is a student-focused project for organizing and sharing useful academic notes. I hope it makes study resources easier to find and supports fellow students as they learn.</p>
+            </section>
+
+            <section class="about-card" aria-labelledby="goals-heading">
+                <h2 id="goals-heading"><span class="about-icon" aria-hidden="true">↗</span>My Goals</h2>
+                <p>Continue learning, develop practical digital skills, deepen my understanding of commerce, and contribute useful resources to the student community.</p>
+            </section>
+        </div>
     </main>
+
+    <footer class="portal-footer">
+        <div class="portal-footer-inner">
+            <p>Student Notes Hub · Made for learning and sharing.</p>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </footer>
 </body>
 </html>
