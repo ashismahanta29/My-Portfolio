@@ -3,12 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Student Notes Hub contributor directory.">
+    <meta name="description" content="Meet the contributor behind the Student Notes Hub and browse currently listed notes.">
     <title>Contributors | Student Notes Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="notes-portal.css">
+    <style>
+        .contributor-profile {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(22px, 5vw, 42px);
+            max-width: 820px;
+            margin-inline: auto;
+            padding: clamp(24px, 5vw, 42px);
+            overflow: hidden;
+            border: 1px solid rgba(183, 165, 255, 0.25);
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(37, 31, 62, 0.94), rgba(16, 19, 32, 0.96) 70%);
+            box-shadow: 0 22px 60px rgba(36, 24, 81, 0.28), inset 0 1px rgba(255, 255, 255, 0.04);
+        }
+        .contributor-profile::before {
+            position: absolute;
+            top: 0;
+            right: 8%;
+            left: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b99cff, #8bdcf4, transparent);
+            content: "";
+        }
+        .contributor-avatar {
+            display: block;
+            width: clamp(104px, 18vw, 150px);
+            aspect-ratio: 1;
+            object-fit: cover;
+            border: 2px solid rgba(198, 180, 255, 0.65);
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 25%, rgba(139, 220, 244, 0.3), transparent 44%), linear-gradient(145deg, #33265d, #151827);
+            box-shadow: 0 0 0 7px rgba(167, 139, 250, 0.07), 0 0 34px rgba(139, 92, 246, 0.26);
+        }
+        .contributor-copy { min-width: 0; }
+        .contributor-copy h2 {
+            margin: 0;
+            font-family: "Space Grotesk", Inter, sans-serif;
+            font-size: clamp(1.7rem, 4vw, 2.45rem);
+            letter-spacing: -0.045em;
+            line-height: 1.2;
+        }
+        .contributor-role { margin: 7px 0 0; color: #c7b8ff; font-weight: 600; }
+        .contributor-description { max-width: 570px; margin: 13px 0 19px; color: var(--portal-muted); }
+        .contributor-roll {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 9px;
+            margin: 0 0 21px;
+            color: #d7d4e6;
+            font-size: 0.92rem;
+        }
+        .contributor-roll strong { color: #fff; }
+        .contributor-button { cursor: pointer; font-family: inherit; }
+        .contribution-panel { max-width: 820px; margin: 28px auto 0; scroll-margin-top: 100px; }
+        .contribution-panel[hidden] { display: none; }
+        .contribution-summary {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin: 0 0 20px;
+        }
+        .contribution-summary h2 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: clamp(1.45rem, 3vw, 1.9rem); }
+        .contribution-total { margin: 0; color: #d4c8ff; font-weight: 650; }
+        .contribution-subjects { display: grid; gap: 13px; }
+        .contribution-subject { padding: 19px; border: 1px solid var(--portal-line); border-radius: 13px; background: rgba(10, 11, 19, 0.48); }
+        .contribution-subject h3 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: 1.05rem; }
+        .contribution-subject p { margin: 4px 0 12px; color: var(--portal-muted); font-size: 0.9rem; }
+        .contribution-subject ul { margin: 0; padding-left: 20px; color: #e5e2f1; }
+        .contribution-subject a { overflow-wrap: anywhere; }
+        .contribution-note { margin: 17px 0 0; color: var(--portal-muted); font-size: 0.9rem; }
+        @media (max-width: 560px) {
+            .contributor-profile { grid-template-columns: 1fr; justify-items: start; gap: 21px; }
+            .contributor-avatar { width: 104px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .contributor-button { transition: none; }
+        }
+    </style>
 </head>
 <body>
     <nav class="portal-nav" aria-label="Main navigation">
@@ -19,18 +101,63 @@
         <a href="about.html">About Me</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <header class="portal-hero">
         <div class="portal-hero-inner">
             <p class="portal-kicker">Student Notes Hub</p>
-            <h1>Contributors</h1>
-            <p class="portal-hero-copy">The contributor directory will be added later.</p>
+            <h1>Contributor Profile</h1>
+            <p class="portal-hero-copy">Get to know the person sharing resources with the student community.</p>
         </div>
     </header>
+
     <main class="portal-main">
-        <section class="portal-detail-panel" aria-label="Contributors placeholder">
-            <p class="portal-detail-intro">Student contributors will be listed here when the directory is ready.</p>
-            <p><a class="portal-action" href="index.html">Home</a></p>
+        <article class="contributor-profile" aria-labelledby="contributor-name">
+            <img class="contributor-avatar" src="images/ashis.jpg.webp" alt="Ashis Mahanta">
+            <div class="contributor-copy">
+                <p class="portal-kicker">Contributor</p>
+                <h2 id="contributor-name">Ashis Mahanta</h2>
+                <p class="contributor-role">Founder &amp; Notes Contributor</p>
+                <p class="contributor-description">Sharing study notes to help fellow students learn and prepare more effectively.</p>
+                <button class="portal-action contributor-button" id="view-contributions" type="button" aria-expanded="false" aria-controls="contribution-details">View My Contributions</button>
+            </div>
+        </article>
+
+        <section class="portal-detail-panel contribution-panel" id="contribution-details" aria-labelledby="contribution-heading" hidden>
+            <div class="contribution-summary">
+                <h2 id="contribution-heading">Contribution Details</h2>
+                <p class="contribution-total">Total currently listed notes: 1</p>
+            </div>
+            <div class="contribution-subjects">
+                <article class="contribution-subject">
+                    <h3>Financial Accounting <span aria-label="1 note">· 1 note</span></h3>
+                    <p>Currently listed notes</p>
+                    <ul>
+                        <li><a href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">AEDP HR Operations – Study Material (PDF)</a></li>
+                    </ul>
+                </article>
+            </div>
+            <p class="contribution-note">The project does not track who uploaded each file. Counts show currently listed notes based on the existing subject page; the document’s relevance to Financial Accounting is marked for verification there.</p>
         </section>
     </main>
+
+    <footer class="portal-footer">
+        <div class="portal-footer-inner">
+            <p>Student Notes Hub · Made for learning and sharing.</p>
+            <p><a href="index.html">← Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const contributionButton = document.getElementById("view-contributions");
+        const contributionDetails = document.getElementById("contribution-details");
+
+        contributionButton.addEventListener("click", function () {
+            const isOpening = contributionDetails.hidden;
+            contributionDetails.hidden = !isOpening;
+            contributionButton.setAttribute("aria-expanded", String(isOpening));
+            contributionButton.textContent = isOpening ? "Hide Contributions" : "View My Contributions";
+            if (isOpening) contributionDetails.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    </script>
 </body>
 </html>
