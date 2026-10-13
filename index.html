@@ -4,647 +4,543 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Kumar Mahanta | Portfolio & Study Notes</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Student Notes Hub | Ashish Kumar Mahanta</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        * { box-sizing: border-box; scroll-behavior: smooth; }
+        
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            background:
-                radial-gradient(ellipse at 15% 20%, rgba(37,99,235,.16), transparent 42%),
-                radial-gradient(ellipse at 85% 35%, rgba(139,92,246,.18), transparent 45%),
-                #0b0b12;
-            background-attachment: fixed;
-        }
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.7;
+    color: #f4f4f5;
+    background:
+        radial-gradient(ellipse at 15% 20%,
+            rgba(37, 99, 235, 0.19), transparent 42%),
+        radial-gradient(ellipse at 85% 35%,
+            rgba(139, 92, 246, 0.20), transparent 45%),
+        radial-gradient(ellipse at 50% 90%,
+            rgba(59, 130, 246, 0.10), transparent 50%),
+        #0b0b12;
+    background-attachment: fixed;
+}
 
-       
-.combined-layout {
-    width: min(1100px, 94%);
-    margin: 24px auto 50px;
+/* Blurred, glowing navigation */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    padding: 16px 20px;
+    background: rgba(17, 17, 27, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.22);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
 }
 
-.portfolio-column {
-    display: none;
+nav a {
+    color: #c4b5fd;
+    text-decoration: none;
+    padding: 8px 13px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
 }
 
-.notes-column {
+nav a:hover {
+    color: #fff;
+    background: rgba(139, 92, 246, 0.16);
+    border-color: rgba(167, 139, 250, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Blue-purple glowing hero */
+header {
+    position: relative;
+    text-align: center;
+    padding: 65px 20px 50px;
+    background:
+        radial-gradient(ellipse at 50% 35%,
+            rgba(124, 58, 237, 0.23), transparent 65%),
+        radial-gradient(ellipse at 15% 50%,
+            rgba(37, 99, 235, 0.13), transparent 55%);
+}
+
+header h1 {
+    margin: 10px 0;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    background: linear-gradient(100deg, #ffffff, #c4b5fd, #93c5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header p {
+    max-width: 620px;
+    margin: 10px auto;
+    color: #b8b8c8;
+}
+
+/* Main content */
+main {
+    width: calc(100% - 36px);
+    max-width: 1000px;
+    margin: auto;
+    padding: 28px 0 55px;
+}
+
+main > h2 {
+    color: #c4b5fd;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+main > p {
+    color: #b8b8c8;
+}
+
+/* Glass-like search field */
+.search {
+    display: block;
     width: 100%;
+    padding: 15px 17px;
+    margin-bottom: 28px;
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(27, 25, 41, 0.66);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    font: inherit;
+    transition: border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.search:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15),
+                0 0 24px rgba(139, 92, 246, 0.12);
+}
+
+.search::placeholder {
+    color: #9292a8;
+}
+
+/* Subject grid */
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit, minmax(min(100%, 260px), 1fr)
+    );
+    gap: 22px;
+}
+
+/* Transparent glass cards with glow */
+.subject {
+    position: relative;
     min-width: 0;
+    overflow: hidden;
+    padding: 25px;
+    border: 1px solid rgba(167, 139, 250, 0.22);
+    border-radius: 16px;
+    background: linear-gradient(
+        145deg,
+        rgba(35, 35, 57, 0.70),
+        rgba(19, 19, 30, 0.62)
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
 }
 
-.notes-panel {
-    position: static;
-    max-height: none;
-    overflow: visible;
+.subject::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(
+        90deg, transparent, #8b5cf6, #60a5fa, transparent
+    );
+    opacity: 0.8;
 }
 
-.notes-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.subject:hover {
+    transform: translateY(-7px);
+    border-color: rgba(167, 139, 250, 0.65);
+    background: linear-gradient(
+        145deg,
+        rgba(48, 42, 75, 0.82),
+        rgba(22, 22, 39, 0.76)
+    );
+    box-shadow: 0 16px 38px rgba(109, 40, 217, 0.22),
+                0 0 20px rgba(96, 165, 250, 0.06);
 }
 
+.subject h2 {
+    margin: 0 0 12px;
+    color: #c4b5fd;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.subject p {
+    color: #b8b8c8;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Glowing PDF button */
+.note-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 10px 15px;
+    border: 1px solid #a78bfa;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 6px 22px rgba(139, 92, 246, 0.18);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+}
+
+.note-link:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #9b6bff, #7c3aed);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35);
+}
+
+.empty {
+    display: none;
+    color: #c4c4d0;
+    text-align: center;
+    margin-top: 25px;
+}
+
+footer {
+    margin-top: 35px;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(167, 139, 250, 0.18);
+    text-align: center;
+    color: #85859a;
+    background: rgba(11, 11, 18, 0.4);
+}
+
+footer a {
+    color: #c4b5fd;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Keyboard accessibility */
+nav a:focus-visible,
+.note-link:focus-visible,
+.search:focus-visible {
+    outline: 2px solid #c4b5fd;
+    outline-offset: 4px;
+}
+
+/* Mobile layout */
 @media (max-width: 600px) {
-    .notes-grid {
-        grid-template-columns: 1fr;
+    nav {
+        gap: 5px;
+        padding: 12px 8px;
+    }
+
+    nav a {
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    header {
+        padding: 48px 18px 35px;
+    }
+
+    main {
+        width: calc(100% - 28px);
+    }
+
+    main > h2 {
+        font-size: 24px;
+    }
+
+    .subject-grid {
+        gap: 17px;
+    }
+
+    .subject {
+        padding: 22px;
     }
 }
 
-        .portfolio-column, .notes-column { min-width: 0; }
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
 
-        .portfolio-column > header,
-        .portfolio-column > section,
-        .portfolio-column > #cv,
-        .portfolio-column > footer,
-        .notes-panel {
-            margin: 0 0 22px;
-            padding: 25px;
-            border: 1px solid rgba(167,139,250,.20);
-            border-radius: 16px;
-            background: linear-gradient(145deg, rgba(35,35,57,.68), rgba(19,19,30,.72));
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 8px 24px rgba(0,0,0,.16);
-        }
+    .subject:hover,
+    .note-link:hover,
+    nav a:hover {
+        transform: none;
+    }
+}
 
-        .portfolio-column > header { padding: 35px 24px; }
-
-        .portfolio-column h1,
-        .notes-panel > h2 {
-            overflow-wrap: anywhere;
-        }
-
-        .portfolio-column > footer {
-            text-align: center;
-        }
-
-        .notes-panel {
-            position: sticky;
-            top: 82px;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-
-        .notes-panel > h2 {
-            margin-top: 0;
-            color: #c4b5fd;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .notes-panel > p { color: #b8b8c8; }
-
-        .notes-search {
-            display: block;
-            width: 100%;
-            padding: 13px 15px;
-            margin: 18px 0;
-            border: 1px solid rgba(167,139,250,.35);
-            border-radius: 10px;
-            outline: none;
-            background: rgba(27,25,41,.8);
-            color: white;
-            font: inherit;
-        }
-
-        .notes-search:focus {
-            border-color: #a78bfa;
-            box-shadow: 0 0 0 3px rgba(139,92,246,.15);
-        }
-
-        .notes-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        .notes-card {
-            min-width: 0;
-            padding: 18px;
-            border: 1px solid rgba(167,139,250,.24);
-            border-radius: 13px;
-            background: linear-gradient(145deg, rgba(48,42,75,.58), rgba(19,19,30,.66));
-            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-            overflow-wrap: anywhere;
-        }
-
-        .notes-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(167,139,250,.7);
-            box-shadow: 0 12px 28px rgba(109,40,217,.2);
-        }
-
-        .notes-card h3 {
-            margin: 0 0 8px;
-            color: #c4b5fd;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            line-height: 1.4;
-        }
-
-        .notes-card p {
-            margin: 7px 0;
-            color: #b8b8c8;
-            font-size: 14px;
-        }
-
-        .notes-card .note-link {
-            display: inline-block;
-            margin-top: 9px;
-            padding: 9px 12px;
-            border: 1px solid #a78bfa;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .notes-card .note-link:hover {
-            box-shadow: 0 8px 22px rgba(139,92,246,.35);
-        }
-
-        .notes-empty {
-            display: none;
-            color: #c4b5fd;
-            text-align: center;
-        }
-
-        .notes-all-link {
-            display: inline-block;
-            margin-top: 18px;
-            color: #c4b5fd;
-        }
-
-        .education-track, .project-grid { min-width: 0; }
-
-        .cv-preview img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        @media (max-width: 900px) {
-            .combined-layout {
-                grid-template-columns: 1fr;
-                width: min(760px, 94%);
-            }
-
-            .notes-panel {
-                position: static;
-                max-height: none;
-                overflow: visible;
-            }
-
-            .notes-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 520px) {
-            .combined-layout { width: 94%; gap: 14px; }
-            .portfolio-column > header,
-            .portfolio-column > section,
-            .portfolio-column > #cv,
-            .portfolio-column > footer,
-            .notes-panel { padding: 18px; margin-bottom: 15px; }
-
-            .notes-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                transition: none !important;
-                animation: none !important;
-            }
-            .notes-card:hover { transform: none; }
-        }
     </style>
 </head>
+
 <body>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        ```html
+<a href="#" onclick="openProfileModal(); return false;">About Me</a>
+```
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="notes.html" aria-current="page">Notes Hub</a>
+    </nav>
 
-   
-<nav aria-label="Main navigation">
-    <a href="#notes">Home</a>
-    <a href="#notes">Study Notes</a>
-    <a href="#" onclick="openProfileModal(); return false;">About Me</a>
-    <a href="cv.html">CV</a>
-    <a href="notes.html">Notes Hub</a>
-</nav>
+    <header class="hero">
+        <p class="eyebrow">Learn · Organize · Share</p>
+        <h1>Student Notes Hub</h1>
+        <p>Notes, study materials and resources — all in one place.</p>
+        <p>Created by a student, for students.</p>
+    </header>
 
-
-    <div class="combined-layout">
-
-        <!-- LEFT: EXISTING PORTFOLIO -->
-        <div class="portfolio-column">
-
-            <header id="home">
-                <p>WELCOME TO MY PORTFOLIO</p>
-                <h1>Hi, I'm ASHISH KUMAR MAHANTA</h1>
-                <h2>B.Com Student | Aspiring Web Developer</h2>
-                <p>
-                    I'm a commerce student exploring technology, coding,
-                    and web development. I enjoy learning by building
-                    practical projects.
-                </p>
-                <a href="#projects" class="main-button">View My Projects</a>
-            </header>
-
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    I'm a commerce student exploring technology, coding,
-                    and web development. I enjoy learning by building
-                    practical projects.
-                </p>
-                <h3>Education</h3>
-                <p>B.Com (HR Operations and Commerce)</p>
-                
-            </section>
-
-            <section id="education">
-                <h2>My Education Journey</h2>
-                <p>Every step has been part of my learning journey.</p>
-
-                <div class="education-track">
-                    <article class="project-card education-card">
-                        <span class="project-tag">Early Education</span>
-                        <h3>First School</h3>
-                        <p><strong>School:</strong> Add school name</p>
-                        <p><strong>Classes:</strong> Add classes</p>
-                        <p><strong>Years:</strong> Add years</p>
-                    </article>
-
-                    <article class="project-card education-card">
-                        <span class="project-tag">School Education</span>
-                        <h3>High School</h3>
-                        <p><strong>School:</strong> Add school name</p>
-                        <p><strong>Classes:</strong> Add classes</p>
-                        <p><strong>Years:</strong> Add years</p>
-                    </article>
-
-                    <article class="project-card education-card">
-                        <span class="project-tag">CHSE Odisha</span>
-                        <h3>+2 Commerce</h3>
-                        <p><strong>College:</strong> Rourkela Higher Secondary School</p>
-                        <p><strong>Result:</strong> 528/600 (88%)</p>
-                        <p><strong>Stream:</strong> Commerce</p>
-                    </article>
-
-                    <article class="project-card education-card">
-                        <span class="project-tag">Currently Pursuing</span>
-                        <h3>B.Com</h3>
-                        <p>HR Operations and Commerce</p>
-                        <p><strong>College:</strong> Government Autonomous College, Rourkela</p>
-                        <p><strong>Years:</strong> 2026–2029</p>
-                    </article>
-                </div>
-            </section>
-
-            <section id="skills">
-                <h2>My Skills</h2>
-                <p>HTML · CSS · Problem Solving · Learning</p>
-            </section>
-
-            <section id="projects">
-                <h2>My Projects</h2>
-                <div class="project-grid">
-                    <article class="project-card">
-                        <span class="project-tag">HTML · CSS</span>
-                        <h3>Personal Portfolio</h3>
-                        <p>
-                            A dark-themed website introducing me,
-                            my skills, and the projects I build.
-                        </p>
-                        <a href="#home">Back to Home ↗</a>
-                    </article>
-                </div>
-            </section>
-
-            <section id="cv">
-                <h2>My CV / Resume</h2>
-                <p>My education, academic performance, skills and achievements.</p>
-
-                <div class="cv-preview">
-                    <img src="cv-design-preview.png" alt="Preview of my CV" loading="lazy">
-                </div>
-
-                <div class="cv-details">
-                    <h3>Academic Qualifications</h3>
-
-                    <div class="cv-item">
-                        <h4>B.Com (HR Operations and Commerce)</h4>
-                        <p>Government Autonomous College, Rourkela</p>
-                        <p>2026–2029 · Currently pursuing</p>
-                    </div>
-
-                    <div class="cv-item">
-                        <h4>+2 Commerce</h4>
-                        <p>CHSE Odisha · 528/600 (88%)</p>
-                    </div>
-
-                    <div class="cv-item">
-                        <h4>10th — High School</h4>
-                        <p>Add your verified marks and passing year here.</p>
-                    </div>
-
-                    <h3>Skills</h3>
-                    <p>HTML · CSS · Problem Solving · Learning</p>
-
-                    <h3>Projects</h3>
-                    <p>Personal Portfolio Website — built using HTML and CSS.</p>
-
-                    <h3>Achievements and Career Goals</h3>
-                    <p>Recognized in the local newspaper for the +2 Commerce result.</p>
-                    <p>Goal: Continue learning web development and build practical projects.</p>
-                </div>
-            </section>
-
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <p>Want to connect or discuss a project?</p>
-                <a class="main-button" href="mailto:mahantaashis178@gmail.com">
-                    Send Me an Email
-                </a>
-            </section>
-
-            <footer>
-                <p>© 2026 My Portfolio</p>
-                <p>Portfolio & Study Notes</p>
-            </footer>
-
+    <main>
+        <div class="intro" id="subjects">
+            <h2>B.Com Semester 1</h2>
+            <p>Choose a subject to find its study materials.</p>
         </div>
 
-        <!-- RIGHT: STUDY NOTES -->
-        <aside class="notes-column" id="notes">
-            <div class="notes-panel">
-                <h2>B.Com Semester 1 Notes</h2>
-                <p>Study materials and resources — all in one place.</p>
-                <p>Created by a student, for students.</p>
+        <input
+            class="search"
+            id="search"
+            type="search"
+            placeholder="Search for a subject..."
+            aria-label="Search subjects"
+        >
 
-                <input
-                    class="notes-search"
-                    id="notesSearch"
-                    type="search"
-                    placeholder="Search for a subject..."
-                    aria-label="Search study subjects"
-                >
+        <div class="subject-grid" id="subjectGrid">
+            <article class="subject">
+                <h2>Organizational Behaviour</h2>
+                <p class="subject-code">OB · Core 1.1</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
 
-                <div class="notes-grid" id="notesGrid">
+            <article class="subject">
+                <h2>Principles of Management</h2>
+                <p class="subject-code">Core 1.2</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
 
-                    <article class="notes-card">
-                        <h3>Organizational Behaviour</h3>
-                        <p>OB · Core 1.1</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
+            <article class="subject">
+                <h2>Introduction to Business Economics</h2>
+                <p class="subject-code">Core 1.3</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
 
-                    <article class="notes-card">
-                        <h3>Principles of Management</h3>
-                        <p>Core 1.2</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
+            <article class="subject">
+                <h2>Recruitment and Selection</h2>
+                <p class="subject-code">Core 1.4</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
 
-                    <article class="notes-card">
-                        <h3>Introduction to Business Economics</h3>
-                        <p>Core 1.3</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
-
-                    <article class="notes-card">
-                        <h3>Recruitment and Selection</h3>
-                        <p>Core 1.4</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
-
-                    <article class="notes-card">
-                        <h3>Financial Accounting</h3>
-                        <p>Core 2.1</p>
-                        <p>AEDP HR Operations — Study Material</p>
-                        <a
-                            class="note-link"
-                            href="notes/AEDP_HR-OEPERATIONS%20Final.pdf"
-                            target="_blank"
-                            rel="noopener"
-                        >View / Download PDF</a>
-                    </article>
-
-                    <article class="notes-card">
-                        <h3>Business Communication</h3>
-                        <p>AEC · English</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
-
-                    <article class="notes-card">
-                        <h3>Environmental Studies</h3>
-                        <p>VAC · EVS and Disaster Management</p>
-                        <p>Notes and study materials will be added here.</p>
-                    </article>
-
-                </div>
-
-                <p class="notes-empty" id="notesEmpty">No matching subjects found.</p>
-
-                <a class="notes-all-link" href="#notes">
-    Back to Study Notes ↑
+            <article class="subject">
+                <h2>Financial Accounting</h2>
+                <p class="subject-code">Core 2.1</p>
+                <p>AEDP HR Operations — Study Material</p>
+              
+<a href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">
+  View / Download PDF
 </a>
-            </div>
-        </aside>
 
-    </div>
+            </article>
+
+            <article class="subject">
+                <h2>Business Communication</h2>
+                <p class="subject-code">AEC · English</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+
+            <article class="subject">
+                <h2>Environmental Studies</h2>
+                <p class="subject-code">VAC · EVS and Disaster Management</p>
+                <p>Notes and study materials will be added here.</p>
+            </article>
+        </div>
+
+        <p class="empty" id="empty">No matching subjects found.</p>
+    </main>
+
+    <footer>
+        <p>Student Notes Hub · Made for learning and sharing.</p>
+        <p><a href="index.html">← Back to Ashish's Portfolio</a></p>
+    </footer>
 
     <script>
-        const notesSearch = document.getElementById("notesSearch");
-        const notesCards = document.querySelectorAll(".notes-card");
-        const notesEmpty = document.getElementById("notesEmpty");
+        const search = document.getElementById("search");
+        const subjects = document.querySelectorAll(".subject");
+        const empty = document.getElementById("empty");
 
-        notesSearch.addEventListener("input", function () {
-            const query = notesSearch.value.trim().toLowerCase();
+        search.addEventListener("input", function () {
+            const query = search.value.trim().toLowerCase();
             let visible = 0;
 
-            notesCards.forEach(function (card) {
-                const matches = card.textContent.toLowerCase().includes(query);
-                card.style.display = matches ? "" : "none";
+            subjects.forEach(function (subject) {
+                const matches = subject.textContent
+                    .toLowerCase()
+                    .includes(query);
+
+                subject.style.display = matches ? "" : "none";
+
                 if (matches) visible++;
             });
 
-            notesEmpty.style.display = visible ? "none" : "block";
+            empty.style.display = visible ? "none" : "block";
         });
     </script>
-<!-- Study Notes Popup -->
-<div id="notesModal" class="notes-modal" style="display: none;">
-  <div class="notes-modal-content">
-    <button type="button" class="close-notes-btn" onclick="closeNotesModal()">✕</button>
+    ```html
+<!-- About Me Popup -->
+<div id="profileModal" class="profile-modal" style="display: none;">
+  <div class="profile-modal-content">
+    <button class="close-profile-btn"
+      onclick="closeProfileModal()"
+      aria-label="Close profile">✕</button>
 
-    <h2>📚 B.Com Semester 1 Study Notes</h2>
-    <p>Choose a subject to open its study material.</p>
+    <h2>About Me</h2>
+    <p class="profile-subtitle">My Profile</p>
 
-    <input
-      type="text"
-      id="modalNotesSearch"
-      placeholder="Search subjects..."
-      oninput="searchModalNotes()"
-    >
+    <div class="profile-details">
+      <h3>Education</h3>
+      <p>B.Com (HR Operations and Commerce)</p>
+      <p>Government Autonomous College, Rourkela</p>
 
-    <div class="modal-notes-grid">
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Organizational Behaviour</h3>
-        <p>Core 1.1</p>
-      </a>
+      <h3>About</h3>
+      <p>I am a commerce student interested in learning new skills,
+      technology, business and career development.</p>
 
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Principles of Management</h3>
-        <p>Core 1.2</p>
-      </a>
+      <h3>Skills &amp; Interests</h3>
+      <p>Commerce · Computer Skills · Technology · Continuous Learning</p>
 
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Introduction to Business Economics</h3>
-        <p>Core 1.3</p>
-      </a>
-
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Recruitment &amp; Selection</h3>
-        <p>Core 1.4</p>
-      </a>
-
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Financial Accounting</h3>
-        <p>Core 2.1</p>
-      </a>
-
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Business Communication</h3>
-        <p>AEC English</p>
-      </a>
-
-      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
-        <h3>Environmental Studies &amp; Disaster Management</h3>
-        <p>VAC</p>
-      </a>
+      <h3>Explore My Website</h3>
+      <p>Explore my education, skills, projects, CV and study notes.</p>
     </div>
   </div>
 </div>
 
 <style>
-  .open-notes-btn {
-    margin-top: 18px;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-  }
+.profile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  overflow-y: auto;
+}
 
-  .notes-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.75);
-    padding: 20px;
-    overflow-y: auto;
-  }
+.profile-modal-content {
+  position: relative;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 14px;
+  background: #fff;
+  color: #222;
+}
 
-  .notes-modal-content {
-    position: relative;
-    max-width: 850px;
-    margin: 30px auto;
-    padding: 28px;
-    border-radius: 14px;
-    background: #fff;
-    color: #222;
-  }
+.close-profile-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 
-  .close-notes-btn {
-    float: right;
-    border: none;
-    background: #eee;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+.profile-modal-content h2 {
+  margin-top: 0;
+  padding-right: 35px;
+}
 
-  #modalNotesSearch {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    margin: 12px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
+.profile-subtitle {
+  color: #666;
+}
 
-  .modal-notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-  }
+.profile-details h3 {
+  margin: 22px 0 8px;
+}
 
-  .modal-note-card {
-    display: block;
-    padding: 16px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    color: inherit;
-    text-decoration: none;
-  }
+.profile-details p {
+  line-height: 1.6;
+}
 
-  .modal-note-card:hover {
-    border-color: #2563eb;
-    background: #f5f8ff;
-  }
-
-  .modal-note-card h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
-  }
-
-  .modal-note-card p {
-    margin: 0;
-    color: #666;
-    font-size: 13px;
-  }
-
-  @media (max-width: 600px) {
-    .notes-modal-content {
-      padding: 18px;
-      margin: 10px auto;
-    }
-  }
+body.profile-modal-open {
+  overflow: hidden;
+}
 </style>
 
 <script>
-  function openNotesModal() {
-    document.getElementById("notesModal").style.display = "block";
-    document.body.style.overflow = "hidden";
-  }
+function openProfileModal() {
+  document.getElementById("profileModal").style.display = "block";
+  document.body.classList.add("profile-modal-open");
+}
 
-  function closeNotesModal() {
-    document.getElementById("notesModal").style.display = "none";
-    document.body.style.overflow = "";
-  }
+function closeProfileModal() {
+  document.getElementById("profileModal").style.display = "none";
+  document.body.classList.remove("profile-modal-open");
+}
 
-  function searchModalNotes() {
-    const query = document.getElementById("modalNotesSearch").value.toLowerCase();
+document.getElementById("profileModal").addEventListener("click", function(event) {
+  if (event.target === this) closeProfileModal();
+});
 
-    document.querySelectorAll(".modal-note-card").forEach(card => {
-      card.style.display = card.textContent.toLowerCase().includes(query)
-        ? "block"
-        : "none";
-    });
-  }
-
-  document.getElementById("notesModal").addEventListener("click", function(event) {
-    if (event.target === this) closeNotesModal();
-  });
-
-  document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") closeNotesModal();
-  });
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") closeProfileModal();
+});
 </script>
+```
 </body>
 </html>
