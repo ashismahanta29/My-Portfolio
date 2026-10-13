@@ -21,6 +21,24 @@
 
     a { color: #9edbff; }
 
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      border-radius: 9px;
+      background: linear-gradient(135deg, #477fff, #7653d6);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(71, 127, 255, 0.18);
+    }
+
+    .home-button:hover { background: linear-gradient(135deg, #5a8cff, #8964e8); }
+    .home-button:focus-visible { outline: 2px solid #c4b5fd; outline-offset: 4px; }
+
     .card {
       margin: 22px 0;
       padding: 24px;
@@ -76,7 +94,7 @@
 
 <body>
 <main class="container">
-  <p><a href="index.html">← Back to Notes Hub</a></p>
+  <p><a class="home-button" href="index.html">Home</a></p>
 
   <h1>Share Your Notes</h1>
   <p class="hint">

@@ -140,8 +140,37 @@ footer a:hover {
     color: #fff;
 }
 
+.about-section, .community-section {
+    margin: 0 auto 32px;
+    padding: clamp(18px, 3vw, 28px);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(24, 22, 39, 0.92), rgba(15, 16, 27, 0.9));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+}
+.about-section { text-align: center; }
+.about-kicker { color: #c4b5fd; font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.about-section h2 {
+    margin: 6px 0 10px;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -.04em;
+    background: linear-gradient(100deg, #fff 10%, #c4b5fd 52%, #93c5fd 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 12px rgba(139, 92, 246, .18));
+}
+.about-section > p:not(.about-kicker), .community-section > p { max-width: 680px; margin: 0 auto 18px; color: #b8b8c8; }
+.about-link { display: inline-block; margin-top: 8px; padding: 10px 16px; border: 1px solid rgba(167,139,250,.35); border-radius: 9px; color: #ddd6fe; text-decoration: none; }
+.about-link:hover { background: rgba(139,92,246,.14); }
+.community-section { text-align: center; }
+.community-note { display: inline-block; padding: 10px 14px; border: 1px solid rgba(147,197,253,.2); border-radius: 999px; color: #c4b5fd !important; background: rgba(59,130,246,.08); }
+
 /* Keyboard accessibility */
 nav a:focus-visible,
+.about-link:focus-visible,
 .portal-search:focus-visible,
 .portal-card-link:focus-visible {
     outline: 2px solid #c4b5fd;
@@ -195,21 +224,18 @@ nav a:focus-visible,
 <body>
   
 <nav>
-  <a href="#home">Home</a>
- <a href="share-notes.html">Share Notes</a>
-  <a href="#" onclick="openProfileModal(); return false;">About Me</a>
-  <a href="cv.html">CV</a>
-  <a href="#subjects">Skills</a>
-  <a href="#subjects">Projects</a>
-  <a href="#subjects">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="share-notes.html">Share Notes</a>
   <a href="notes.html">Notes Hub</a>
+  <a href="contributors.html">Contributors</a>
+  <a href="about.html">About Me</a>
+  <a href="index.html#contact">Contact</a>
 </nav>
 
-    <header class="hero">
+    <header class="hero" id="home">
         <p class="eyebrow">Learn · Organize · Share</p>
-        <h1>AEDP Student Hub</h1>
-<p>Your subjects, notes and study materials — organized in one place.</p>
-<p>Learn · Organize · Succeed</p>
+        <h1>Student Notes Portal</h1>
+        <p>Your subjects, notes and study materials — organized in one place.</p>
     </header>
 
     <main>
@@ -269,11 +295,31 @@ nav a:focus-visible,
 
             <p class="portal-empty" id="homepage-subject-empty" role="status" hidden>No matching subjects found.</p>
         </section>
+
+        <section class="community-section" id="contributors" aria-labelledby="contributors-heading">
+            <h2 id="contributors-heading">Built by students, shared with students</h2>
+            <p>Students who contribute notes will be featured here as shared materials are reviewed and added to the Notes Hub.</p>
+            <p class="community-note">Have notes to share? Help the community grow.</p>
+            <p><a class="about-link" href="share-notes.html">Share Notes</a></p>
+        </section>
+
+        <section class="community-section" id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact</h2>
+            <p>For notes-related questions or to contribute study materials, please use the Share Notes page.</p>
+            <p><a class="about-link" href="share-notes.html">Go to Share Notes</a></p>
+        </section>
+
+        <section class="about-section" id="about" aria-labelledby="about-heading">
+            <p class="about-kicker">Student · Builder · Community</p>
+            <h2 id="about-heading">Ashis Mahanta</h2>
+            <p>I’m a B.Com student building a place where students can find, organize, and share study notes with one another.</p>
+            <a class="about-link" href="notes.html">Explore the Notes Hub</a>
+        </section>
     </main>
 
     <footer>
         <p>Student Notes Hub · Made for learning and sharing.</p>
-        <p><a href="index.html">← Back to Ashish's Portfolio</a></p>
+        <p><a href="index.html">← Back to Home</a></p>
     </footer>
 
     <script>
@@ -295,104 +341,5 @@ nav a:focus-visible,
             empty.hidden = visible > 0;
         });
     </script>
-<!-- About Me Popup -->
-<div id="profileModal" class="profile-modal" style="display: none;">
-  <div class="profile-modal-content">
-    <button class="close-profile-btn"
-      onclick="closeProfileModal()"
-      aria-label="Close profile">✕</button>
-
-    <h2>About Me</h2>
-    <p class="profile-subtitle">My Profile</p>
-
-    <div class="profile-details">
-      <h3>Education</h3>
-      <p>B.Com (HR Operations and Commerce)</p>
-      <p>Government Autonomous College, Rourkela</p>
-
-      <h3>About</h3>
-      <p>I am a commerce student interested in learning new skills,
-      technology, business and career development.</p>
-
-      <h3>Skills &amp; Interests</h3>
-      <p>Commerce · Computer Skills · Technology · Continuous Learning</p>
-
-      <h3>Explore My Website</h3>
-      <p>Explore my education, skills, projects, CV and study notes.</p>
-    </div>
-  </div>
-</div>
-
-<style>
-.profile-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.profile-modal-content {
-  position: relative;
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 28px;
-  border-radius: 14px;
-  background: #fff;
-  color: #222;
-}
-
-.close-profile-btn {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.profile-modal-content h2 {
-  margin-top: 0;
-  padding-right: 35px;
-}
-
-.profile-subtitle {
-  color: #666;
-}
-
-.profile-details h3 {
-  margin: 22px 0 8px;
-}
-
-.profile-details p {
-  line-height: 1.6;
-}
-
-body.profile-modal-open {
-  overflow: hidden;
-}
-</style>
-
-<script>
-function openProfileModal() {
-  document.getElementById("profileModal").style.display = "block";
-  document.body.classList.add("profile-modal-open");
-}
-
-function closeProfileModal() {
-  document.getElementById("profileModal").style.display = "none";
-  document.body.classList.remove("profile-modal-open");
-}
-
-document.getElementById("profileModal").addEventListener("click", function(event) {
-  if (event.target === this) closeProfileModal();
-});
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") closeProfileModal();
-});
-</script>
 </body>
 </html>
