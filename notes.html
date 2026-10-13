@@ -4,136 +4,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Notes Hub</title>
+    <title>Student Notes Hub | Ashish Kumar Mahanta</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #101018;
-            color: #f5f5f5;
-        }
-
-        header {
-            text-align: center;
-            padding: 45px 20px;
-            background: #1b1930;
-        }
-
-        header h1 {
-            color: #c084fc;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #c9c7d5;
+            background:
+                radial-gradient(ellipse at 50% 15%,
+                rgba(59, 70, 160, 0.18), transparent 55%),
+                radial-gradient(ellipse at 85% 55%,
+                rgba(124, 58, 237, 0.12), transparent 50%),
+                #0b0b12;
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
         nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 22px;
-            padding: 16px;
-            background: #191923;
+            gap: 8px 14px;
+            padding: 16px 20px;
+            background: rgba(17, 17, 27, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
         nav a {
-            color: white;
+            color: #c4b5fd;
             text-decoration: none;
+            padding: 8px 13px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s ease;
         }
 
         nav a:hover {
-            color: #c084fc;
+            color: white;
+            background: rgba(139, 92, 246, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 65px 20px 45px;
+            background: radial-gradient(
+                ellipse at 50% 35%,
+                rgba(124, 58, 237, 0.20),
+                transparent 68%
+            );
+        }
+
+        .eyebrow {
+            color: #c4b5fd;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 12px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            background: linear-gradient(90deg, #fff, #c4b5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: 10px auto;
+            color: #b8b8c8;
         }
 
         main {
+            width: calc(100% - 36px);
             max-width: 1000px;
-            margin: auto;
-            padding: 28px 18px;
+            margin: 0 auto;
+            padding: 25px 0 55px;
+        }
+
+        .intro {
+            margin-bottom: 24px;
+        }
+
+        .intro h2 {
+            margin-bottom: 5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            color: #c4b5fd;
+        }
+
+        .intro p {
+            margin-top: 5px;
+            color: #b8b8c8;
         }
 
         .search {
+            display: block;
             width: 100%;
-            padding: 14px;
-            border: 1px solid #454052;
-            border-radius: 10px;
-            background: #1b1b27;
+            padding: 15px 17px;
+            margin-bottom: 28px;
+            border: 1px solid #39304f;
+            border-radius: 12px;
+            outline: none;
+            background: rgba(27, 25, 41, 0.88);
             color: white;
-            font-size: 16px;
-            margin-bottom: 25px;
+            font: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search:focus {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.13);
         }
 
         .subject-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(
+                auto-fit, minmax(min(100%, 260px), 1fr)
+            );
+            gap: 22px;
         }
 
         .subject {
-            background: #1b1b27;
-            border: 1px solid #343142;
-            border-radius: 14px;
-            padding: 22px;
+            position: relative;
+            min-width: 0;
+            overflow: hidden;
+            padding: 25px;
+            border: 1px solid #34344a;
+            border-radius: 16px;
+            background: linear-gradient(
+                145deg, #1b1b2b 0%, #13131e 100%
+            );
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transition: transform 0.25s ease,
+                        border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .subject::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: linear-gradient(
+                90deg, transparent, #8b5cf6, transparent
+            );
+            opacity: 0.7;
+        }
+
+        .subject:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+            box-shadow: 0 14px 32px rgba(109, 40, 217, 0.17);
         }
 
         .subject h2 {
-            color: #c084fc;
-            font-size: 19px;
+            margin: 0 0 12px;
+            color: #c4b5fd;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            line-height: 1.4;
         }
 
         .subject p {
-            color: #c9c7d5;
-            line-height: 1.6;
+            color: #b8b8c8;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .subject-code {
+            display: inline-block;
+            margin: 0 0 8px;
+            padding: 4px 9px;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 6px;
+            background: rgba(139, 92, 246, 0.12);
+            color: #d8ccff !important;
+            font-size: 12px;
         }
 
         .note-link {
             display: inline-block;
-            color: #e9d5ff;
-            border: 1px solid #8b5cf6;
-            border-radius: 8px;
-            padding: 9px 13px;
-            text-decoration: none;
             margin-top: 8px;
+            padding: 10px 15px;
+            border: 1px solid #a78bfa;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            box-shadow: 0 6px 22px rgba(139, 92, 246, 0.17);
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .note-link:hover {
-            background: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(139, 92, 246, 0.3);
         }
 
         .empty {
             display: none;
-            color: #c9c7d5;
+            padding: 25px;
             text-align: center;
-            margin-top: 25px;
+            color: #b8b8c8;
         }
 
         footer {
+            margin-top: 30px;
+            padding: 28px 20px;
+            border-top: 1px solid #29293a;
             text-align: center;
-            padding: 25px;
-            color: #aaa6b8;
+            color: #85859a;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #c4b5fd;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                gap: 5px;
+                padding: 12px 8px;
+            }
+
+            nav a {
+                padding: 7px 9px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 48px 18px 30px;
+            }
+
+            main {
+                width: calc(100% - 28px);
+            }
+
+            .intro h2 {
+                font-size: 24px;
+            }
+
+            .subject-grid {
+                gap: 17px;
+            }
+
+            .subject {
+                padding: 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
         }
     </style>
 </head>
-<body>
 
-    <nav>
-        <a href="index.html">My Portfolio</a>
-        <a href="#subjects">Subjects</a>
+<body>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="notes.html" aria-current="page">Notes Hub</a>
     </nav>
 
-    <header>
+    <header class="hero">
+        <p class="eyebrow">Learn · Organize · Share</p>
         <h1>Student Notes Hub</h1>
         <p>Notes, study materials and resources — all in one place.</p>
         <p>Created by a student, for students.</p>
     </header>
 
     <main>
-        <h2 id="subjects">B.Com Semester 1</h2>
-        <p>Choose a subject to find its study materials.</p>
+        <div class="intro" id="subjects">
+            <h2>B.Com Semester 1</h2>
+            <p>Choose a subject to find its study materials.</p>
+        </div>
 
         <input
             class="search"
@@ -144,54 +324,53 @@
         >
 
         <div class="subject-grid" id="subjectGrid">
-
             <article class="subject">
                 <h2>Organizational Behaviour</h2>
-                <p>OB · Core 1.1</p>
+                <p class="subject-code">OB · Core 1.1</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
 
             <article class="subject">
                 <h2>Principles of Management</h2>
-                <p>Core 1.2</p>
+                <p class="subject-code">Core 1.2</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
 
             <article class="subject">
                 <h2>Introduction to Business Economics</h2>
-                <p>Core 1.3</p>
+                <p class="subject-code">Core 1.3</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
 
             <article class="subject">
                 <h2>Recruitment and Selection</h2>
-                <p>Core 1.4</p>
+                <p class="subject-code">Core 1.4</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
 
             <article class="subject">
                 <h2>Financial Accounting</h2>
-                <p>Core 2.1</p>
+                <p class="subject-code">Core 2.1</p>
                 <p>AEDP HR Operations — Study Material</p>
-
-
-<a class="note-link" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
-
-
+                <a
+                    class="note-link"
+                    href="notes/AEDP_HR-OPERATIONS%20Final.pdf"
+                    target="_blank"
+                    rel="noopener"
+                >Open PDF ↗</a>
             </article>
 
             <article class="subject">
                 <h2>Business Communication</h2>
-                <p>AEC · English</p>
+                <p class="subject-code">AEC · English</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
 
             <article class="subject">
                 <h2>Environmental Studies</h2>
-                <p>VAC · EVS and Disaster Management</p>
+                <p class="subject-code">VAC · EVS and Disaster Management</p>
                 <p>Notes and study materials will be added here.</p>
             </article>
-
         </div>
 
         <p class="empty" id="empty">No matching subjects found.</p>
@@ -199,6 +378,7 @@
 
     <footer>
         <p>Student Notes Hub · Made for learning and sharing.</p>
+        <p><a href="index.html">← Back to Ashish's Portfolio</a></p>
     </footer>
 
     <script>
@@ -207,7 +387,7 @@
         const empty = document.getElementById("empty");
 
         search.addEventListener("input", function () {
-            const query = search.value.toLowerCase();
+            const query = search.value.trim().toLowerCase();
             let visible = 0;
 
             subjects.forEach(function (subject) {
@@ -223,6 +403,5 @@
             empty.style.display = visible ? "none" : "block";
         });
     </script>
-
 </body>
 </html>
