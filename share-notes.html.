@@ -1,0 +1,172 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Notes | Student Notes Hub</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      color: #f4f6ff;
+      background: linear-gradient(135deg, #080d20, #17132f);
+      min-height: 100vh;
+    }
+
+    .container { max-width: 850px; margin: auto; }
+
+    a { color: #9edbff; }
+
+    .card {
+      margin: 22px 0;
+      padding: 24px;
+      border: 1px solid #394875;
+      border-radius: 18px;
+      background: #111a35;
+    }
+
+    h1 {
+      color: #a9c9ff;
+      text-align: center;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    label { display: block; margin: 14px 0 7px; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #465780;
+      border-radius: 9px;
+      color: white;
+      background: #0b1228;
+    }
+
+    input[type="file"] { padding: 10px; }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      border: 0;
+      border-radius: 9px;
+      color: white;
+      background: linear-gradient(90deg, #477fff, #9060ed);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hint { color: #bdc9e8; font-size: 14px; line-height: 1.6; }
+
+    @media (max-width: 500px) {
+      body { padding: 14px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+<main class="container">
+  <p><a href="index.html">← Back to Notes Hub</a></p>
+
+  <h1>Share Your Notes</h1>
+  <p class="hint">
+    Help other students learn. Choose how you want to contribute.
+    Every submission must be reviewed before publication.
+  </p>
+
+  <div class="choices">
+    <section class="card">
+      <h2>🔗 Share a Link</h2>
+      <p class="hint">Share a Google Drive or other accessible notes link.</p>
+
+      <form action="https://formspree.io/f/mnpjbkwp"
+            method="POST">
+        <input type="hidden" name="_subject"
+               value="Notes link for review">
+
+        <label for="link-name">Name (optional)</label>
+        <input id="link-name" name="contributor"
+               maxlength="80">
+
+        <label for="link-subject">Subject</label>
+        <input id="link-subject" name="subject"
+               required maxlength="120">
+
+        <label for="link-url">Notes link</label>
+        <input id="link-url" type="url" name="notes_link"
+               placeholder="https://..." required>
+
+        <label for="link-description">Description (optional)</label>
+        <textarea id="link-description" name="description"
+                  rows="3" maxlength="1000"></textarea>
+
+        <label>
+          <input type="checkbox" name="permission"
+                 value="yes" required style="width:auto">
+          I have permission to share these notes.
+        </label>
+
+        <button type="submit">Send Link for Review</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📁 Upload Files</h2>
+      <p class="hint">
+        Choose files directly from your phone or computer.
+        No email field is required.
+      </p>
+
+      <form action="https://formspree.io/f/mnpjbkwp"
+            method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject"
+               value="Uploaded notes for review">
+
+        <label for="file-name">Name (optional)</label>
+        <input id="file-name" name="contributor"
+               maxlength="80">
+
+        <label for="file-subject">Subject</label>
+        <input id="file-subject" name="subject"
+               required maxlength="120">
+
+        <label for="notes-files">Select notes files</label>
+        <input id="notes-files" type="file" name="attachments"
+               accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+               multiple required>
+
+        <p class="hint">
+          Use PDF, Word, PowerPoint or image files.
+          Upload limits depend on the form service and plan.
+        </p>
+
+        <label>
+          <input type="checkbox" name="permission"
+                 value="yes" required style="width:auto">
+          I have permission to share these notes.
+        </label>
+
+        <button type="submit">Upload for Review</button>
+      </form>
+    </section>
+  </div>
+
+  <p class="hint">
+    Submissions are contributions, not automatic publications.
+    Only approved materials will be added to the Notes Hub.
+  </p>
+</main>
+</body>
+</html>
+```
