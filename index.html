@@ -21,14 +21,39 @@
             background-attachment: fixed;
         }
 
-        .combined-layout {
-            width: min(1500px, 96%);
-            margin: 24px auto 50px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
-            gap: 24px;
-            align-items: start;
-        }
+       
+.combined-layout {
+    width: min(1100px, 94%);
+    margin: 24px auto 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.portfolio-column {
+    display: none;
+}
+
+.notes-column {
+    width: 100%;
+    min-width: 0;
+}
+
+.notes-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+}
+
+.notes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 600px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
         .portfolio-column, .notes-column { min-width: 0; }
 
@@ -203,16 +228,15 @@
 </head>
 <body>
 
-    <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#cv">CV</a>
-        <a href="#notes">Study Notes</a>
-        <a href="#contact">Contact</a>
-    </nav>
+   
+<nav aria-label="Main navigation">
+    <a href="#notes">Home</a>
+    <a href="#notes">Study Notes</a>
+    <a href="#" onclick="openProfileModal(); return false;">About Me</a>
+    <a href="cv.html">CV</a>
+    <a href="notes.html">Notes Hub</a>
+</nav>
+
 
     <div class="combined-layout">
 
@@ -240,9 +264,7 @@
                 </p>
                 <h3>Education</h3>
                 <p>B.Com (HR Operations and Commerce)</p>
-                <button type="button" class="open-notes-btn" onclick="openNotesModal()">
-  📚 Open B.Com Study Notes
-</button>
+                
             </section>
 
             <section id="education">
