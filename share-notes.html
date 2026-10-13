@@ -92,27 +92,27 @@
 
       <form action="https://forminit.com/f/5tmq5we196e"
             method="POST">
-        <input type="hidden" name="_subject"
+        <input type="hidden" name="fi-text-submission_type"
                value="Notes link for review">
 
         <label for="link-name">Name (optional)</label>
-        <input id="link-name" name="contributor"
+        <input id="link-name" name="fi-text-contributor"
                maxlength="80">
 
         <label for="link-subject">Subject</label>
-        <input id="link-subject" name="subject"
+        <input id="link-subject" name="fi-text-subject"
                required maxlength="120">
 
         <label for="link-url">Notes link</label>
-        <input id="link-url" type="url" name="notes_link"
+        <input id="link-url" type="url"name="fi-url-notes_link"
                placeholder="https://..." required>
 
         <label for="link-description">Description (optional)</label>
-        <textarea id="link-description" name="description"
+        <textarea id="link-description" name="fi-text-description"
                   rows="3" maxlength="1000"></textarea>
 
         <label>
-          <input type="checkbox" name="permission"
+          <input type="checkbox" name="fi-checkbox-permission"
                  value="yes" required style="width:auto">
           I have permission to share these notes.
         </label>
@@ -130,19 +130,19 @@
 
       <form action="https://forminit.com/f/5tmq5we196e"
             method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject"
+        <input type="hidden" name="fi-text-submission_type"
                value="Uploaded notes for review">
 
         <label for="file-name">Name (optional)</label>
-        <input id="file-name" name="contributor"
+        <input id="file-name " name="fi-text-contributor"
                maxlength="80">
 
         <label for="file-subject">Subject</label>
-        <input id="file-subject" name="subject"
+        <input id="file-subject" name="fi-text-subject"
                required maxlength="120">
 
         <label for="notes-files">Select notes files</label>
-        <input id="notes-files" type="file" name="attachments"
+        <input id="notes-files" type="file" name="fi-file-attachments[]"
                accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
                multiple required>
 
@@ -152,7 +152,7 @@
         </p>
 
         <label>
-          <input type="checkbox" name="permission"
+          <input type="checkbox" name="fi-checkbox-permission"
                  value="yes" required style="width:auto">
           I have permission to share these notes.
         </label>
