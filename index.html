@@ -453,6 +453,176 @@
             notesEmpty.style.display = visible ? "none" : "block";
         });
     </script>
+<!-- Study Notes Popup -->
+<div id="notesModal" class="notes-modal" style="display: none;">
+  <div class="notes-modal-content">
+    <button type="button" class="close-notes-btn" onclick="closeNotesModal()">✕</button>
 
+    <h2>📚 B.Com Semester 1 Study Notes</h2>
+    <p>Choose a subject to open its study material.</p>
+
+    <input
+      type="text"
+      id="modalNotesSearch"
+      placeholder="Search subjects..."
+      oninput="searchModalNotes()"
+    >
+
+    <div class="modal-notes-grid">
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Organizational Behaviour</h3>
+        <p>Core 1.1</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Principles of Management</h3>
+        <p>Core 1.2</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Introduction to Business Economics</h3>
+        <p>Core 1.3</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Recruitment &amp; Selection</h3>
+        <p>Core 1.4</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Financial Accounting</h3>
+        <p>Core 2.1</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Business Communication</h3>
+        <p>AEC English</p>
+      </a>
+
+      <a class="modal-note-card" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank">
+        <h3>Environmental Studies &amp; Disaster Management</h3>
+        <p>VAC</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .open-notes-btn {
+    margin-top: 18px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .notes-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .notes-modal-content {
+    position: relative;
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 28px;
+    border-radius: 14px;
+    background: #fff;
+    color: #222;
+  }
+
+  .close-notes-btn {
+    float: right;
+    border: none;
+    background: #eee;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #modalNotesSearch {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 12px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .modal-notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .modal-note-card {
+    display: block;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .modal-note-card:hover {
+    border-color: #2563eb;
+    background: #f5f8ff;
+  }
+
+  .modal-note-card h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+  }
+
+  .modal-note-card p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .notes-modal-content {
+      padding: 18px;
+      margin: 10px auto;
+    }
+  }
+</style>
+
+<script>
+  function openNotesModal() {
+    document.getElementById("notesModal").style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeNotesModal() {
+    document.getElementById("notesModal").style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  function searchModalNotes() {
+    const query = document.getElementById("modalNotesSearch").value.toLowerCase();
+
+    document.querySelectorAll(".modal-note-card").forEach(card => {
+      card.style.display = card.textContent.toLowerCase().includes(query)
+        ? "block"
+        : "none";
+    });
+  }
+
+  document.getElementById("notesModal").addEventListener("click", function(event) {
+    if (event.target === this) closeNotesModal();
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeNotesModal();
+  });
+</script>
 </body>
 </html>
