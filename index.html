@@ -140,6 +140,41 @@ footer a:hover {
     color: #fff;
 }
 
+.visit-counter {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px 8px;
+    margin: 12px 0 0;
+    padding: 8px 13px;
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(59, 130, 246, 0.07));
+    box-shadow: 0 0 22px rgba(139, 92, 246, 0.08);
+    color: #c9c6d9;
+    font-size: 0.86rem;
+}
+
+.visit-counter strong {
+    color: #d8ccff;
+    font-variant-numeric: tabular-nums;
+}
+
+.visit-counter .counterapi {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.4em;
+    color: #d8ccff;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.visit-counter a {
+    color: #a9dff0;
+    font-size: 0.78rem;
+}
+
 .about-section, .community-section {
     margin: 0 auto 32px;
     padding: clamp(18px, 3vw, 28px);
@@ -324,6 +359,12 @@ nav a:focus-visible,
     <footer>
         <p>Student Notes Hub · Made for learning and sharing.</p>
         <p><a href="index.html">← Back to Home</a></p>
+        <div class="visit-counter" aria-live="polite">
+            <span>Total Website Visits:</span>
+            <strong id="website-visit-status">Loading visit count…</strong>
+            <div class="counterapi" key="website-total-visits" action="view" noCss="true" noIcon="true" noLink="true" aria-label="Total website visits"></div>
+            <a href="https://counterapi.com/" target="_blank" rel="noopener noreferrer">Visitor counter by CounterAPI</a>
+        </div>
     </footer>
 
     <script>
@@ -344,6 +385,33 @@ nav a:focus-visible,
 
             empty.hidden = visible > 0;
         });
+
+        const counterWidget = document.querySelector(".counterapi");
+        const counterStatus = document.getElementById("website-visit-status");
+        let counterFallbackTimer;
+
+        function showCounterUnavailable() {
+            if (!counterWidget.textContent.trim()) {
+                counterStatus.textContent = "Unavailable right now";
+            }
+        }
+
+        const counterObserver = new MutationObserver(function () {
+            if (counterWidget.textContent.trim()) {
+                counterStatus.hidden = true;
+                window.clearTimeout(counterFallbackTimer);
+                counterObserver.disconnect();
+            }
+        });
+
+        counterObserver.observe(counterWidget, { childList: true, subtree: true, characterData: true });
+        counterFallbackTimer = window.setTimeout(showCounterUnavailable, 12000);
+
+        const counterScript = document.createElement("script");
+        counterScript.src = "https://counterapi.com/c.js?ns=" + encodeURIComponent(window.location.hostname);
+        counterScript.async = true;
+        counterScript.addEventListener("error", showCounterUnavailable);
+        document.head.appendChild(counterScript);
     </script>
 </body>
 </html>
