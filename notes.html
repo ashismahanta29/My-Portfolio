@@ -1,425 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse the Student Notes Hub and its available study materials.">
     <title>Student Notes Hub | Ashish Kumar Mahanta</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        
-* {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: 'Inter', Arial, sans-serif;
-    line-height: 1.7;
-    color: #f4f4f5;
-    background:
-        radial-gradient(ellipse at 15% 20%,
-            rgba(37, 99, 235, 0.19), transparent 42%),
-        radial-gradient(ellipse at 85% 35%,
-            rgba(139, 92, 246, 0.20), transparent 45%),
-        radial-gradient(ellipse at 50% 90%,
-            rgba(59, 130, 246, 0.10), transparent 50%),
-        #0b0b12;
-    background-attachment: fixed;
-}
-
-/* Blurred, glowing navigation */
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    padding: 16px 20px;
-    background: rgba(17, 17, 27, 0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(167, 139, 250, 0.22);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
-}
-
-nav a {
-    color: #c4b5fd;
-    text-decoration: none;
-    padding: 8px 13px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-}
-
-nav a:hover {
-    color: #fff;
-    background: rgba(139, 92, 246, 0.16);
-    border-color: rgba(167, 139, 250, 0.25);
-    transform: translateY(-2px);
-}
-
-/* Blue-purple glowing hero */
-header {
-    position: relative;
-    text-align: center;
-    padding: 65px 20px 50px;
-    background:
-        radial-gradient(ellipse at 50% 35%,
-            rgba(124, 58, 237, 0.23), transparent 65%),
-        radial-gradient(ellipse at 15% 50%,
-            rgba(37, 99, 235, 0.13), transparent 55%);
-}
-
-header h1 {
-    margin: 10px 0;
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-    background: linear-gradient(100deg, #ffffff, #c4b5fd, #93c5fd);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-header p {
-    max-width: 620px;
-    margin: 10px auto;
-    color: #b8b8c8;
-}
-
-/* Main content */
-main {
-    width: calc(100% - 36px);
-    max-width: 1000px;
-    margin: auto;
-    padding: 28px 0 55px;
-}
-
-main > h2 {
-    color: #c4b5fd;
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
-    font-size: 28px;
-    letter-spacing: -0.5px;
-}
-
-main > p {
-    color: #b8b8c8;
-}
-
-/* Glass-like search field */
-.search {
-    display: block;
-    width: 100%;
-    padding: 15px 17px;
-    margin-bottom: 28px;
-    border: 1px solid rgba(167, 139, 250, 0.25);
-    border-radius: 12px;
-    outline: none;
-    background: rgba(27, 25, 41, 0.66);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: #fff;
-    font: inherit;
-    transition: border-color 0.25s ease,
-                box-shadow 0.25s ease;
-}
-
-.search:focus {
-    border-color: #a78bfa;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15),
-                0 0 24px rgba(139, 92, 246, 0.12);
-}
-
-.search::placeholder {
-    color: #9292a8;
-}
-
-/* Subject grid */
-.subject-grid {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fit, minmax(min(100%, 260px), 1fr)
-    );
-    gap: 22px;
-}
-
-/* Transparent glass cards with glow */
-.subject {
-    position: relative;
-    min-width: 0;
-    overflow: hidden;
-    padding: 25px;
-    border: 1px solid rgba(167, 139, 250, 0.22);
-    border-radius: 16px;
-    background: linear-gradient(
-        145deg,
-        rgba(35, 35, 57, 0.70),
-        rgba(19, 19, 30, 0.62)
-    );
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-    transition: transform 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease,
-                background 0.3s ease;
-}
-
-.subject::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 20px;
-    right: 20px;
-    height: 2px;
-    background: linear-gradient(
-        90deg, transparent, #8b5cf6, #60a5fa, transparent
-    );
-    opacity: 0.8;
-}
-
-.subject:hover {
-    transform: translateY(-7px);
-    border-color: rgba(167, 139, 250, 0.65);
-    background: linear-gradient(
-        145deg,
-        rgba(48, 42, 75, 0.82),
-        rgba(22, 22, 39, 0.76)
-    );
-    box-shadow: 0 16px 38px rgba(109, 40, 217, 0.22),
-                0 0 20px rgba(96, 165, 250, 0.06);
-}
-
-.subject h2 {
-    margin: 0 0 12px;
-    color: #c4b5fd;
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.subject p {
-    color: #b8b8c8;
-    line-height: 1.8;
-    overflow-wrap: anywhere;
-}
-
-/* Glowing PDF button */
-.note-link {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 10px 15px;
-    border: 1px solid #a78bfa;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 6px 22px rgba(139, 92, 246, 0.18);
-    transition: transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
-}
-
-.note-link:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, #9b6bff, #7c3aed);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.35);
-}
-
-.empty {
-    display: none;
-    color: #c4c4d0;
-    text-align: center;
-    margin-top: 25px;
-}
-
-footer {
-    margin-top: 35px;
-    padding: 30px 20px;
-    border-top: 1px solid rgba(167, 139, 250, 0.18);
-    text-align: center;
-    color: #85859a;
-    background: rgba(11, 11, 18, 0.4);
-}
-
-footer a {
-    color: #c4b5fd;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #fff;
-}
-
-/* Keyboard accessibility */
-nav a:focus-visible,
-.note-link:focus-visible,
-.search:focus-visible {
-    outline: 2px solid #c4b5fd;
-    outline-offset: 4px;
-}
-
-/* Mobile layout */
-@media (max-width: 600px) {
-    nav {
-        gap: 5px;
-        padding: 12px 8px;
-    }
-
-    nav a {
-        padding: 7px 9px;
-        font-size: 13px;
-    }
-
-    header {
-        padding: 48px 18px 35px;
-    }
-
-    main {
-        width: calc(100% - 28px);
-    }
-
-    main > h2 {
-        font-size: 24px;
-    }
-
-    .subject-grid {
-        gap: 17px;
-    }
-
-    .subject {
-        padding: 22px;
-    }
-}
-
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-    }
-
-    .subject:hover,
-    .note-link:hover,
-    nav a:hover {
-        transform: none;
-    }
-}
-
-    </style>
+    <link rel="stylesheet" href="notes-portal.css">
 </head>
-
 <body>
-    <nav aria-label="Main navigation">
+    <nav class="portal-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Skills</a>
         <a href="index.html#projects">Projects</a>
         <a href="index.html#contact">Contact</a>
         <a href="notes.html" aria-current="page">Notes Hub</a>
+        <a href="share-notes.html">Share Notes</a>
     </nav>
 
-    <header class="hero">
-        <p class="eyebrow">Learn · Organize · Share</p>
-        <h1>Student Notes Hub</h1>
-        <p>Notes, study materials and resources — all in one place.</p>
-        <p>Created by a student, for students.</p>
+    <header class="portal-hero">
+        <div class="portal-hero-inner">
+            <p class="portal-kicker">Learn · Organize · Share</p>
+            <h1>Student Notes Hub</h1>
+            <p class="portal-hero-copy">Find the study materials currently listed for each subject, all in one place.</p>
+        </div>
     </header>
 
-    <main>
-        <div class="intro" id="subjects">
-            <h2>B.Com Semester 1</h2>
-            <p>Choose a subject to find its study materials.</p>
+    <main class="portal-main" id="subjects">
+        <h2 class="portal-section-heading">Explore your subjects</h2>
+        <p class="portal-section-copy">Choose a subject to view its listed materials.</p>
+
+        <div class="portal-search-wrap">
+            <label class="portal-search-label" for="search">Search subjects</label>
+            <input class="portal-search" id="search" type="search" placeholder="Search by subject name or code..." aria-label="Search subjects">
         </div>
 
-        <input
-            class="search"
-            id="search"
-            type="search"
-            placeholder="Search for a subject..."
-            aria-label="Search subjects"
-        >
-
-        <div class="subject-grid" id="subjectGrid">
-            <article class="subject">
-                <h2>Organizational Behaviour</h2>
-                <p class="subject-code">OB · Core 1.1</p>
-                <p>Notes and study materials will be added here.</p>
+        <div class="portal-grid" id="subjectGrid">
+            <article class="portal-card">
+                <p class="portal-code">OB · Core 1.1</p>
+                <h3>Organizational Behaviour</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="organizational-behaviour.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Principles of Management</h2>
-                <p class="subject-code">Core 1.2</p>
-                <p>Notes and study materials will be added here.</p>
+            <article class="portal-card">
+                <p class="portal-code">Core 1.2</p>
+                <h3>Principles of Management</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="principles-of-management.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Introduction to Business Economics</h2>
-                <p class="subject-code">Core 1.3</p>
-                <p>Notes and study materials will be added here.</p>
+            <article class="portal-card">
+                <p class="portal-code">Core 1.3</p>
+                <h3>Introduction to Business Economics</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="business-economics.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Recruitment and Selection</h2>
-                <p class="subject-code">Core 1.4</p>
-                <p>Notes and study materials will be added here.</p>
+            <article class="portal-card">
+                <p class="portal-code">Core 1.4</p>
+                <h3>Recruitment and Selection</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="recruitment-and-selection.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Financial Accounting</h2>
-                <p class="subject-code">Core 2.1</p>
-                <p>AEDP HR Operations — Study Material</p>
-              
-<a href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">
-  View / Download PDF
-</a>
-
+            <article class="portal-card">
+                <p class="portal-code">Core 2.1</p>
+                <h3>Financial Accounting</h3>
+                <p class="portal-card-copy">One document is listed; its subject relevance should be verified.</p>
+                <a class="portal-card-link" href="financial-accounting.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Business Communication</h2>
-                <p class="subject-code">AEC · English</p>
-                <p>Notes and study materials will be added here.</p>
+            <article class="portal-card">
+                <p class="portal-code">AEC · English</p>
+                <h3>Business Communication</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="business-communication.html">Explore Subject</a>
             </article>
-
-            <article class="subject">
-                <h2>Environmental Studies</h2>
-                <p class="subject-code">VAC · EVS and Disaster Management</p>
-                <p>Notes and study materials will be added here.</p>
+            <article class="portal-card">
+                <p class="portal-code">VAC · EVS and Disaster Management</p>
+                <h3>Environmental Studies</h3>
+                <p class="portal-card-copy">No materials are available yet.</p>
+                <a class="portal-card-link" href="environmental-studies.html">Explore Subject</a>
             </article>
         </div>
 
-        <p class="empty" id="empty">No matching subjects found.</p>
+        <p class="portal-empty" id="empty" role="status" hidden>No matching subjects found.</p>
     </main>
 
-    <footer>
-        <p>Student Notes Hub · Made for learning and sharing.</p>
-        <p><a href="index.html">← Back to Ashish's Portfolio</a></p>
+    <footer class="portal-footer">
+        <div class="portal-footer-inner">
+            <p>Student Notes Hub · Made for learning and sharing.</p>
+            <p><a href="index.html">← Back to Ashish's Portfolio</a></p>
+        </div>
     </footer>
 
     <script>
         const search = document.getElementById("search");
-        const subjects = document.querySelectorAll(".subject");
+        const subjects = document.querySelectorAll(".portal-card");
         const empty = document.getElementById("empty");
 
         search.addEventListener("input", function () {
@@ -427,16 +103,12 @@ nav a:focus-visible,
             let visible = 0;
 
             subjects.forEach(function (subject) {
-                const matches = subject.textContent
-                    .toLowerCase()
-                    .includes(query);
-
-                subject.style.display = matches ? "" : "none";
-
+                const matches = subject.textContent.toLowerCase().includes(query);
+                subject.hidden = !matches;
                 if (matches) visible++;
             });
 
-            empty.style.display = visible ? "none" : "block";
+            empty.hidden = visible > 0;
         });
     </script>
 </body>
