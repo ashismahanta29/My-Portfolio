@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Notes Hub | Ashish Kumar Mahanta</title>
+    <title>AEDP Student Hub | Notes & Study Materials</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -326,11 +326,40 @@ nav a:focus-visible,
     }
 }
 
+/* Explore Subjects heading */
+.explore-intro {
+  text-align: center;
+  margin: 48px auto 30px;
+  max-width: 800px;
+}
+
+.explore-intro .share-badge {
+  display: inline-block;
+  color: #8fdcff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(143, 220, 255, 0.45);
+}
+
+.explore-intro h2 {
+  margin: 12px 0;
+  background: linear-gradient(90deg, #8fdcff, #c5a7ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.explore-intro p {
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
     </style>
 </head>
 
 <body>
-   ```html
+  
 <nav>
   <a href="#home">Home</a>
  <a href="share-notes.html">Share Notes</a>
@@ -345,9 +374,9 @@ nav a:focus-visible,
 
     <header class="hero">
         <p class="eyebrow">Learn · Organize · Share</p>
-        <h1>Student Notes Hub</h1>
-        <p>Notes, study materials and resources — all in one place.</p>
-        <p>Created by a student, for students.</p>
+        <h1>AEDP Student Hub</h1>
+<p>Your subjects, notes and study materials — organized in one place.</p>
+<p>Learn · Organize · Succeed</p>
     </header>
 
     <main>
@@ -364,188 +393,17 @@ nav a:focus-visible,
             aria-label="Search subjects"
         >
 ```html
-<!-- Share Your Notes -->
-<section id="share-notes" class="share-notes-section">
-  <div class="share-notes-card">
-    <span class="share-badge">COMMUNITY CONTRIBUTIONS</span>
-    <h2>Share Your Notes</h2>
-    <p class="share-intro">
-      Have useful study materials? Share them with fellow students.
-      Every submission is reviewed before it appears on this website.
-    </p>
 
-    <form
-      action="https://formspree.io/f/mnpjbkwp"
-      method="POST"
-    >
-      <input type="hidden" name="_subject"
-             value="New Student Notes Submission">
-
-      <label for="contributor-name">Your name</label>
-      <input id="contributor-name" name="name"
-             type="text" maxlength="80" required
-             placeholder="Enter your name">
-
-      <label for="contributor-email">Email address</label>
-      <input id="contributor-email" name="email"
-             type="email" required
-             placeholder="you@example.com">
-
-      <label for="notes-subject">Subject</label>
-      <input id="notes-subject" name="subject"
-             type="text" maxlength="120" required
-             placeholder="e.g. Principles of Management">
-
-      <label for="notes-semester">Semester / Class</label>
-      <select id="notes-semester" name="semester" required>
-        <option value="">Choose semester</option>
-        <option>B.Com Semester 1</option>
-        <option>B.Com Semester 2</option>
-        <option>B.Com Semester 3</option>
-        <option>B.Com Semester 4</option>
-        <option>B.Com Semester 5</option>
-        <option>B.Com Semester 6</option>
-        <option>Other class / course</option>
-      </select>
-
-      <label for="notes-link">Link to your notes</label>
-      <input id="notes-link" name="notes_link"
-             type="url" required
-             placeholder="https://drive.google.com/...">
-
-      <label for="notes-description">Description (optional)</label>
-      <textarea id="notes-description" name="description"
-                rows="4" maxlength="1000"
-                placeholder="What do these notes cover?"></textarea>
-
-      <label class="share-consent">
-        <input type="checkbox" name="permission_to_share"
-               value="yes" required>
-        <span>I have permission to share these materials, and I
-        understand they will be reviewed before publication.</span>
-      </label>
-
-      <button type="submit" class="share-submit-btn">
-        Submit Notes for Review →
-      </button>
-
-      <p class="share-privacy">
-        Your submission is sent for private review. It will not
-        automatically appear on the website.
-      </p>
-    </form>
-  </div>
+<!-- Explore Subjects -->
+<section class="explore-intro">
+  <span class="share-badge">YOUR STUDY LIBRARY</span>
+  <h2>Explore Your Subjects</h2>
+  <p>
+    Choose a subject to find its notes, syllabus,
+    question papers and other study materials.
+  </p>
 </section>
 
-<style>
-.share-notes-section {
-  margin: 48px auto;
-  max-width: 900px;
-}
-
-.share-notes-card {
-  padding: 30px;
-  border: 1px solid rgba(115, 150, 255, .45);
-  border-radius: 20px;
-  background: linear-gradient(145deg, #101b3c, #17132d);
-  box-shadow: 0 0 28px rgba(70, 110, 255, .16);
-  color: #f4f6ff;
-}
-
-.share-badge {
-  color: #8fdcff;
-  font-size: 12px;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.share-notes-card h2 {
-  margin: 12px 0;
-  font-size: 30px;
-  background: linear-gradient(90deg, #8fdcff, #c5a7ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.share-intro {
-  color: #c9d2ee;
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.share-notes-card form {
-  display: grid;
-  gap: 10px;
-}
-
-.share-notes-card label {
-  margin-top: 8px;
-  font-weight: 600;
-}
-
-.share-notes-card input:not([type="checkbox"]),
-.share-notes-card select,
-.share-notes-card textarea {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #394875;
-  border-radius: 10px;
-  background: #0c1228;
-  color: #fff;
-  font: inherit;
-}
-
-.share-notes-card input::placeholder,
-.share-notes-card textarea::placeholder {
-  color: #9ba8c9;
-}
-
-.share-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #d5def8;
-}
-
-.share-consent input {
-  margin-top: 5px;
-}
-
-.share-submit-btn {
-  margin-top: 14px;
-  padding: 14px 18px;
-  border: 0;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #4d83ff, #9564ff);
-  color: white;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.share-submit-btn:hover {
-  filter: brightness(1.12);
-}
-
-.share-privacy {
-  color: #aebbe0;
-  font-size: 12px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-@media (max-width: 600px) {
-  .share-notes-card {
-    padding: 20px;
-  }
-  .share-notes-card h2 {
-    font-size: 25px;
-  }
-}
 </style>
 ```
         <div class="subject-grid" id="subjectGrid">
