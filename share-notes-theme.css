@@ -148,4 +148,14 @@ body:has(.portal-nav) {
 :root[data-theme="bright"] .home-button:focus-visible { outline: 3px solid #6650c2; outline-offset: 3px; }
 :root[data-theme="bright"] button[type="submit"],
 :root[data-theme="bright"] .home-button { box-shadow: 0 9px 24px rgba(91,65,177,.22),inset 0 1px rgba(255,255,255,.25); }
+
+/* The form panels stay neutral in both themes. */
+.card,
+.card:hover {
+    background: rgba(128, 140, 160, .055) !important;
+    border-color: rgba(128, 140, 160, .3) !important;
+    box-shadow: none !important;
+}
+.card::before,
+.card::after { display: none !important; background: none !important; box-shadow: none !important; }
 .portal-nav > .theme-toggle { width: auto; }

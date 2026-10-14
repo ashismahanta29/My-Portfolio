@@ -160,6 +160,81 @@
 :root[data-theme="bright"] .contact-icon { color: #5840b3; background: linear-gradient(145deg, rgba(151,119,232,.14), rgba(75,194,209,.12)); border-color: rgba(111,85,184,.22); }
 :root[data-theme="bright"] .community-note { color: #5540b2 !important; background: rgba(146,119,226,.09); }
 
+/* Neutral card surfaces for both themes; retain card geometry and content. */
+.portal-card,
+.portal-detail-panel,
+.portal-material-card,
+.about-profile,
+.about-card,
+.contributor-profile,
+.future-contributor,
+.contact-card,
+.about-section,
+.community-section,
+.project-card,
+#education .education-card,
+.card {
+    background: rgba(128, 140, 160, .055) !important;
+    border-color: rgba(128, 140, 160, .3) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+.portal-card::before,
+.portal-card::after,
+.about-profile::before,
+.about-profile::after,
+.about-card::before,
+.about-card::after,
+.contributor-profile::before,
+.contributor-profile::after,
+.future-contributor::before,
+.future-contributor::after,
+.contact-card::before,
+.contact-card::after,
+.about-section::before,
+.about-section::after,
+.community-section::before,
+.community-section::after,
+.project-card::before,
+.project-card::after,
+#education .education-card::before,
+#education .education-card::after,
+.card::before,
+.card::after {
+    display: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+.portal-card:hover,
+.portal-material-card:hover,
+.about-card:hover,
+.about-profile:hover,
+.contributor-profile:hover,
+.future-contributor:hover,
+.contact-card:hover,
+.about-section:hover,
+.community-section:hover,
+.project-card:hover,
+#education .education-card:hover,
+.card:hover {
+    background: rgba(128, 140, 160, .055) !important;
+    border-color: rgba(128, 140, 160, .3) !important;
+    box-shadow: none !important;
+}
+.about-profile .about-photo,
+.contributor-profile .contributor-avatar,
+.future-contributor .future-avatar {
+    border-color: rgba(128, 140, 160, .35) !important;
+    box-shadow: none !important;
+}
+.about-card .about-icon,
+.contact-card .contact-icon {
+    background: rgba(128, 140, 160, .055) !important;
+    border-color: rgba(128, 140, 160, .3) !important;
+    box-shadow: none !important;
+}
+
 .theme-toggle {
     display: inline-flex;
     flex: 0 0 auto;
