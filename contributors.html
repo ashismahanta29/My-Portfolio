@@ -241,67 +241,9 @@
         <section class="portal-detail-panel contribution-panel" id="contribution-details" aria-labelledby="contribution-heading" hidden>
             <div class="contribution-summary">
                 <h2 id="contribution-heading">Contribution Details</h2>
-                <p class="contribution-total">Total contributions listed: 9</p>
+                <p class="contribution-total" id="contribution-total" role="status" aria-live="polite">Loading contributions...</p>
             </div>
-            <div class="contribution-subjects">
-                <article class="contribution-subject">
-                    <h3>Financial Accounting <span aria-label="4 notes">· 4 notes</span></h3>
-                    <p>Published materials</p>
-                    <div class="portal-grid contribution-card-grid">
-                        <article class="portal-card">
-                            <p class="portal-code">Financial Accounting</p>
-                            <h3>Financial Accounting Syllabus</h3>
-                            <a class="portal-card-link" href="notes/Financial%20Accounting%20Syllabus.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Financial Accounting</p>
-                            <h3>Accounting Principles</h3>
-                            <a class="portal-card-link" href="notes/Accounting%20Principles.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Financial Accounting</p>
-                            <h3>Depreciation Ind AS 16</h3>
-                            <a class="portal-card-link" href="notes/Depreciation%20ind-16.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Financial Accounting</p>
-                            <h3>AEDP HR Operations – Study Material</h3>
-                            <a class="portal-card-link" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                    </div>
-                </article>
-                <article class="contribution-subject">
-                    <h3>Organizational Behaviour <span aria-label="5 notes">· 5 notes</span></h3>
-                    <p>Published syllabus and chapters</p>
-                    <div class="portal-grid contribution-card-grid">
-                        <article class="portal-card">
-                            <p class="portal-code">Organizational Behaviour</p>
-                            <h3>Syllabus OB</h3>
-                            <a class="portal-card-link" href="notes/Syllabus%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Organizational Behaviour</p>
-                            <h3>Chapter 1 OB</h3>
-                            <a class="portal-card-link" href="notes/Chapter%201%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Organizational Behaviour</p>
-                            <h3>Chapter 2 OB</h3>
-                            <a class="portal-card-link" href="notes/Chapter%202%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Organizational Behaviour</p>
-                            <h3>Chapter 3 OB</h3>
-                            <a class="portal-card-link" href="notes/Chapter%203%20OB%20(2).pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                        <article class="portal-card">
-                            <p class="portal-code">Organizational Behaviour</p>
-                            <h3>Chapter 4 OB</h3>
-                            <a class="portal-card-link" href="notes/Chapter%204%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-                        </article>
-                    </div>
-                </article>
-            </div>
+            <div class="contribution-subjects" id="contribution-subjects" role="status" aria-live="polite"></div>
             <p class="contribution-note">Repository history records these files as added by Ashis Mahanta’s account; it does not establish who authored the PDF contents. The AEDP HR Operations document is listed on the Financial Accounting page, where its subject relevance is marked for verification.</p>
         </section>
     </main>
@@ -316,6 +258,104 @@
     <script>
         const contributionButton = document.getElementById("view-contributions");
         const contributionDetails = document.getElementById("contribution-details");
+        const contributionTotal = document.getElementById("contribution-total");
+        const contributionSubjects = document.getElementById("contribution-subjects");
+
+        function validateCatalog(catalog) {
+            if (!catalog || !Array.isArray(catalog.contributions)) {
+                throw new Error("Invalid contribution catalog");
+            }
+
+            return catalog.contributions.map(function (note) {
+                const validText = note && [note.title, note.contributor].every(function (value) {
+                    return typeof value === "string" && value.trim().length > 0;
+                });
+                const validSubject = note && (note.subject === null
+                    || (typeof note.subject === "string" && note.subject.trim().length > 0));
+                const validPath = typeof note.path === "string"
+                    && note.path.startsWith("notes/")
+                    && note.path.toLowerCase().endsWith(".pdf")
+                    && !note.path.split("/").some(function (part) { return part === ".." || part === "." || part === ""; });
+
+                if (!validText || !validSubject || !validPath) throw new Error("Invalid contribution entry");
+                return note;
+            });
+        }
+
+        function makeContributionCard(note) {
+            const card = document.createElement("article");
+            card.className = "portal-card";
+
+            const subject = document.createElement("p");
+            subject.className = "portal-code";
+            subject.textContent = note.subject || "Subject to confirm";
+
+            const title = document.createElement("h3");
+            title.textContent = note.title;
+
+            const link = document.createElement("a");
+            link.className = "portal-card-link";
+            link.href = note.path.split("/").map(encodeURIComponent).join("/");
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.textContent = "View PDF";
+
+            card.append(subject, title, link);
+            return card;
+        }
+
+        function renderContributions(notes) {
+            contributionTotal.textContent = "Total contributions listed: " + notes.length;
+            contributionSubjects.replaceChildren();
+
+            if (notes.length === 0) {
+                contributionSubjects.textContent = "No published contributions are listed yet.";
+                return;
+            }
+
+            const bySubject = new Map();
+            notes.forEach(function (note) {
+                const subjectName = note.subject || "Subject to confirm";
+                if (!bySubject.has(subjectName)) bySubject.set(subjectName, []);
+                bySubject.get(subjectName).push(note);
+            });
+
+            bySubject.forEach(function (subjectNotes, subjectName) {
+                const section = document.createElement("article");
+                section.className = "contribution-subject";
+
+                const heading = document.createElement("h3");
+                heading.append(document.createTextNode(subjectName + " "));
+                const count = document.createElement("span");
+                count.setAttribute("aria-label", subjectNotes.length + " notes");
+                count.textContent = "· " + subjectNotes.length + " notes";
+                heading.append(count);
+
+                const description = document.createElement("p");
+                description.textContent = subjectName === "Organizational Behaviour"
+                    ? "Published syllabus and chapters"
+                    : "Published materials";
+
+                const grid = document.createElement("div");
+                grid.className = "portal-grid contribution-card-grid";
+                subjectNotes.forEach(function (note) { grid.append(makeContributionCard(note)); });
+
+                section.append(heading, description, grid);
+                contributionSubjects.append(section);
+            });
+        }
+
+        fetch(new URL("notes-catalog.json", window.location.href))
+            .then(function (response) {
+                if (!response.ok) throw new Error("Catalog request failed");
+                return response.json();
+            })
+            .then(validateCatalog)
+            .then(renderContributions)
+            .catch(function () {
+                contributionTotal.textContent = "Contribution total unavailable.";
+                contributionSubjects.textContent = "Contributions could not be loaded. Please try again later.";
+            });
 
         contributionButton.addEventListener("click", function () {
             const isOpening = contributionDetails.hidden;
