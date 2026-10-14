@@ -88,6 +88,10 @@ footer {
         margin: 5px 8px;
     }
 
+    .homepage nav a[hidden] {
+        display: none;
+    }
+
     section {
         margin: 20px 14px;
         padding: 24px;
