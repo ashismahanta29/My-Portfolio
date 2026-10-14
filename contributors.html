@@ -140,12 +140,14 @@
         }
         .contribution-summary h2 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: clamp(1.45rem, 3vw, 1.9rem); }
         .contribution-total { margin: 0; color: #d4c8ff; font-weight: 650; }
-        .contribution-subjects { display: grid; gap: 13px; }
-        .contribution-subject { padding: 19px; border: 1px solid var(--portal-line); border-radius: 13px; background: rgba(10, 11, 19, 0.48); }
-        .contribution-subject h3 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: 1.05rem; }
-        .contribution-subject p { margin: 4px 0 12px; color: var(--portal-muted); font-size: 0.9rem; }
-        .contribution-subject ul { margin: 0; padding-left: 20px; color: #e5e2f1; }
-        .contribution-subject a { overflow-wrap: anywhere; }
+        .contribution-subjects { display: grid; gap: 12px; }
+        .contribution-subject { padding: 16px; border: 1px solid var(--portal-line); border-radius: 13px; background: rgba(10, 11, 19, 0.48); }
+        .contribution-subject > h3 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: 1.05rem; }
+        .contribution-subject > p { margin: 4px 0 8px; color: var(--portal-muted); font-size: 0.9rem; }
+        .contribution-card-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 12px; }
+        .contribution-card-grid .portal-card { min-width: 0; min-height: 148px; padding: 16px; border-radius: 14px; }
+        .contribution-card-grid .portal-code { margin-bottom: 6px; font-size: 0.68rem; }
+        .contribution-card-grid .portal-card h3 { font-size: 1.08rem; line-height: 1.3; overflow-wrap: anywhere; }
         .contribution-note { margin: 17px 0 0; color: var(--portal-muted); font-size: 0.9rem; }
         @media (max-width: 560px) {
             .contributor-profile { grid-template-columns: 1fr; justify-items: start; gap: 21px; }
@@ -239,18 +241,68 @@
         <section class="portal-detail-panel contribution-panel" id="contribution-details" aria-labelledby="contribution-heading" hidden>
             <div class="contribution-summary">
                 <h2 id="contribution-heading">Contribution Details</h2>
-                <p class="contribution-total">Total currently listed notes: 1</p>
+                <p class="contribution-total">Total contributions listed: 9</p>
             </div>
             <div class="contribution-subjects">
                 <article class="contribution-subject">
-                    <h3>Financial Accounting <span aria-label="1 note">· 1 note</span></h3>
-                    <p>Currently listed notes</p>
-                    <ul>
-                        <li><a href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">AEDP HR Operations – Study Material (PDF)</a></li>
-                    </ul>
+                    <h3>Financial Accounting <span aria-label="4 notes">· 4 notes</span></h3>
+                    <p>Published materials</p>
+                    <div class="portal-grid contribution-card-grid">
+                        <article class="portal-card">
+                            <p class="portal-code">Financial Accounting</p>
+                            <h3>Financial Accounting Syllabus</h3>
+                            <a class="portal-card-link" href="notes/Financial%20Accounting%20Syllabus.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Financial Accounting</p>
+                            <h3>Accounting Principles</h3>
+                            <a class="portal-card-link" href="notes/Accounting%20Principles.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Financial Accounting</p>
+                            <h3>Depreciation Ind AS 16</h3>
+                            <a class="portal-card-link" href="notes/Depreciation%20ind-16.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Financial Accounting</p>
+                            <h3>AEDP HR Operations – Study Material</h3>
+                            <a class="portal-card-link" href="notes/AEDP_HR-OEPERATIONS%20Final.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                    </div>
+                </article>
+                <article class="contribution-subject">
+                    <h3>Organizational Behaviour <span aria-label="5 notes">· 5 notes</span></h3>
+                    <p>Published syllabus and chapters</p>
+                    <div class="portal-grid contribution-card-grid">
+                        <article class="portal-card">
+                            <p class="portal-code">Organizational Behaviour</p>
+                            <h3>Syllabus OB</h3>
+                            <a class="portal-card-link" href="notes/Syllabus%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Organizational Behaviour</p>
+                            <h3>Chapter 1 OB</h3>
+                            <a class="portal-card-link" href="notes/Chapter%201%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Organizational Behaviour</p>
+                            <h3>Chapter 2 OB</h3>
+                            <a class="portal-card-link" href="notes/Chapter%202%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Organizational Behaviour</p>
+                            <h3>Chapter 3 OB</h3>
+                            <a class="portal-card-link" href="notes/Chapter%203%20OB%20(2).pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                        <article class="portal-card">
+                            <p class="portal-code">Organizational Behaviour</p>
+                            <h3>Chapter 4 OB</h3>
+                            <a class="portal-card-link" href="notes/Chapter%204%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
+                        </article>
+                    </div>
                 </article>
             </div>
-            <p class="contribution-note">The project does not track who uploaded each file. Counts show currently listed notes based on the existing subject page; the document’s relevance to Financial Accounting is marked for verification there.</p>
+            <p class="contribution-note">Repository history records these files as added by Ashis Mahanta’s account; it does not establish who authored the PDF contents. The AEDP HR Operations document is listed on the Financial Accounting page, where its subject relevance is marked for verification.</p>
         </section>
     </main>
 

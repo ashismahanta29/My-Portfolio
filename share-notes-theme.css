@@ -1,8 +1,140 @@
+.container { width: min(100%, 900px); padding: clamp(20px, 4vw, 36px); }
+
+body:has(.portal-nav) {
+    font-family: Inter, Arial, sans-serif;
+    line-height: 1.7;
+    background-attachment: fixed;
+}
+
+.container > h1 {
+    margin: 10px 0 14px;
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: clamp(2.25rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 1.12;
+    text-align: center;
+    background: linear-gradient(105deg, #fff 10%, #c8b8ff 55%, #9ce7f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 16px rgba(139, 92, 246, .18));
+}
+
+.container > .hint {
+    max-width: 680px;
+    margin: 0 auto 22px;
+    color: var(--portal-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.choices { gap: 18px; }
+
+.card {
+    position: relative;
+    margin: 0;
+    padding: clamp(20px, 3vw, 28px);
+    overflow: hidden;
+    border: 1px solid var(--portal-line);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(28, 28, 46, .92), rgba(15, 16, 27, .94));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, .2);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card::before {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    left: 22px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a78bfa, #7ddff2, transparent);
+    content: "";
+    opacity: .8;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(187, 167, 255, .42);
+    box-shadow: 0 18px 38px rgba(55, 39, 107, .22);
+}
+
+.card h2 {
+    margin: 0 0 7px;
+    color: #eee9ff;
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: -.025em;
+    line-height: 1.3;
+}
+
+.card .hint { margin: 0 0 16px; color: var(--portal-muted); font-size: .92rem; line-height: 1.6; }
+
+.card label {
+    margin: 14px 0 7px;
+    color: #d8d5e6;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.card input,
+.card select,
+.card textarea {
+    font: 400 .95rem/1.5 Inter, Arial, sans-serif;
+    border-color: rgba(183, 165, 255, .24);
+    background: rgba(10, 11, 19, .62);
+    transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.card input:focus-visible,
+.card select:focus-visible,
+.card textarea:focus-visible {
+    border-color: rgba(185, 220, 255, .65);
+    box-shadow: 0 0 0 3px rgba(139, 220, 244, .12);
+}
+
+.card input[type="checkbox"] { accent-color: #9a7bea; }
+
+.card button[type="submit"] {
+    min-height: 44px;
+    margin-top: 18px;
+    border: 1px solid rgba(190, 171, 255, .38);
+    background: linear-gradient(135deg, #7652d1, #5238ac);
+    box-shadow: 0 8px 22px rgba(91, 65, 177, .22);
+    font: 650 .95rem/1 Inter, Arial, sans-serif;
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.card button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(91, 65, 177, .3);
+    filter: brightness(1.08);
+}
+
+.card button[type="submit"]:focus-visible {
+    outline: 2px solid var(--portal-focus);
+    outline-offset: 3px;
+}
+
+.container > p:last-child { margin: 22px auto 0; }
+
 :root[data-theme="bright"] body { color: #202944; background: radial-gradient(ellipse at 12% 8%, rgba(173,151,245,.2), transparent 34rem), radial-gradient(ellipse at 90% 26%, rgba(90,208,219,.16), transparent 32rem), linear-gradient(145deg,#fbfcff,#f1f4fa 62%,#fff8fc); transition: background-color 260ms ease,color 260ms ease; }
 :root[data-theme="bright"] a { color: #5540b2; }
 :root[data-theme="bright"] h1 { color: #49328d; }
 :root[data-theme="bright"] .hint { color: #566176; }
 :root[data-theme="bright"] .card { border: 1px solid transparent; background: linear-gradient(145deg,rgba(255,255,255,.92),rgba(249,251,255,.78)) padding-box,linear-gradient(120deg,#9466f3,#48c9dc 28%,#ed83be 52%,#ffb16e 76%,#76c99a) border-box; box-shadow: 0 18px 44px rgba(49,62,100,.12),0 0 22px rgba(135,98,231,.08),inset 0 1px #fff; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+:root[data-theme="bright"] .card::before { height: 3px; opacity: .82; background: linear-gradient(120deg, #9466f3, #48c9dc 28%, #ed83be 52%, #ffb16e 76%, #76c99a); }
+:root[data-theme="bright"] .card:hover { box-shadow: 0 20px 42px rgba(49,62,100,.15), 0 0 26px rgba(132,94,218,.13); }
+:root[data-theme="bright"] .card h2 { color: #202944; }
+:root[data-theme="bright"] .card label { color: #303b53; }
+:root[data-theme="bright"] .card input,
+:root[data-theme="bright"] .card select,
+:root[data-theme="bright"] .card textarea { border-color: rgba(122,94,190,.24); background: rgba(255,255,255,.78); color: #202944; box-shadow: inset 0 1px 3px rgba(40,52,83,.04); }
+:root[data-theme="bright"] .card input::placeholder,
+:root[data-theme="bright"] .card textarea::placeholder { color: #768197; }
+:root[data-theme="bright"] .container > h1 { background-image: linear-gradient(105deg, #30235f 10%, #7551cc 54%, #1388a3 100%); color: transparent; }
 :root[data-theme="bright"] label { color: #303b53; }
 :root[data-theme="bright"] input,
 :root[data-theme="bright"] select,
@@ -16,8 +148,4 @@
 :root[data-theme="bright"] .home-button:focus-visible { outline: 3px solid #6650c2; outline-offset: 3px; }
 :root[data-theme="bright"] button[type="submit"],
 :root[data-theme="bright"] .home-button { box-shadow: 0 9px 24px rgba(91,65,177,.22),inset 0 1px rgba(255,255,255,.25); }
-.theme-toggle { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:42px; margin:0 0 8px; padding:9px 14px; border:1px solid rgba(167,139,250,.4); border-radius:999px; background:linear-gradient(135deg,#477fff,#7653d6); color:#fff; font:600 .9rem/1 Arial,sans-serif; cursor:pointer; box-shadow:0 7px 20px rgba(71,127,255,.2); transition:transform 180ms ease,box-shadow 180ms ease; }
-.theme-toggle:hover { transform:translateY(-1px); box-shadow:0 10px 24px rgba(91,65,177,.25); }
-.theme-toggle:focus-visible { outline:3px solid #c4b5fd; outline-offset:3px; }
-.theme-toggle-icon { font-size:1rem; }
-@media(prefers-reduced-motion:reduce){.theme-toggle,.theme-toggle:hover{transition:none;transform:none}:root[data-theme="bright"] *, :root[data-theme="bright"] *::before, :root[data-theme="bright"] *::after{transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.portal-nav > .theme-toggle { width: auto; }

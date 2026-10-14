@@ -8,19 +8,24 @@
     </script>
 <title>Share Your Notes | Student Notes Hub</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="notes-portal.css">
+  <link rel="stylesheet" href="bright-mode.css">
   <style>
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      padding: 24px;
+      padding: 0;
       font-family: Arial, sans-serif;
       color: #f4f6ff;
       background: linear-gradient(135deg, #080d20, #17132f);
       min-height: 100vh;
     }
 
-    .container { max-width: 850px; margin: auto; }
+    .container { max-width: 850px; margin: auto; padding: 24px; }
 
     a { color: #9edbff; }
 
@@ -89,7 +94,7 @@
     .hint { color: #bdc9e8; font-size: 14px; line-height: 1.6; }
 
     @media (max-width: 500px) {
-      body { padding: 14px; }
+      .container { padding: 14px; }
       .card { padding: 18px; }
     }
   </style>
@@ -102,9 +107,15 @@
 </head>
 
 <body>
+<nav class="portal-nav" aria-label="Main navigation">
+  <a href="index.html">Home</a>
+  <a href="share-notes.html" aria-current="page">Share Notes</a>
+  <a href="notes.html">Notes Hub</a>
+  <a href="contributors.html">Contributors</a>
+  <a href="about.html">About Me</a>
+  <a href="contact.html">Contact</a>
+</nav>
 <main class="container">
-  <p><a class="home-button" href="index.html">Home</a></p>
-
   <h1>Share Your Notes</h1>
   <p class="hint">
     Help other students learn. Choose how you want to contribute.
