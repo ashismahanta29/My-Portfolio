@@ -274,7 +274,7 @@
                     || (typeof note.subject === "string" && note.subject.trim().length > 0));
                 const validPath = typeof note.path === "string"
                     && note.path.startsWith("notes/")
-                    && note.path.toLowerCase().endsWith(".pdf")
+                    && /\.(pdf|doc|docx|ppt|pptx|jpe?g|png)$/i.test(note.path)
                     && !note.path.split("/").some(function (part) { return part === ".." || part === "." || part === ""; });
 
                 if (!validText || !validSubject || !validPath) throw new Error("Invalid contribution entry");
@@ -298,7 +298,7 @@
             link.href = note.path.split("/").map(encodeURIComponent).join("/");
             link.target = "_blank";
             link.rel = "noopener";
-            link.textContent = "View PDF";
+            link.textContent = "View " + note.path.split(".").pop().toUpperCase();
 
             card.append(subject, title, link);
             return card;
