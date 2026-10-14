@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function(){try{var t=localStorage.getItem('my-portfolio-theme');if(t==='bright'){document.documentElement.dataset.theme='bright';document.documentElement.style.colorScheme='light';}else{document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark';}}catch(e){document.documentElement.dataset.theme='dark';}})();
+    </script>
+    <meta name="description" content="Take part in the Student Notes Hub poll.">
+    <title>Polls | Student Notes Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="notes-portal.css">
+    <link rel="stylesheet" href="bright-mode.css">
+    <link rel="stylesheet" href="polls-feature.css">
+    <script defer src="theme.js"></script>
+    <script defer src="polls-feature.js"></script>
+</head>
+<body class="polls-page">
+    <nav class="portal-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="share-notes.html">Share Notes</a>
+        <a href="notes.html">Notes Hub</a>
+        <a href="contributors.html">Contributors</a>
+        <a href="polls.html" aria-current="page">Polls</a>
+        <a href="about.html">About Me</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <header class="portal-hero">
+        <div class="portal-hero-inner">
+            <p class="portal-kicker">Student Notes Hub</p>
+            <h1>Polls</h1>
+            <p class="portal-hero-copy">Share your thoughts in our student poll.</p>
+        </div>
+    </header>
+    <main class="portal-main">
+        <section class="poll-page-card" aria-label="Student poll">
+            <iframe class="poll-page-frame" title="Student poll Google Form" src="https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?embedded=true" loading="lazy">Loading…</iframe>
+            <p class="poll-page-note">If the form does not load, <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?usp=publish-editor" target="_blank" rel="noopener">open it in Google Forms</a>.</p>
+            <div class="poll-page-confirm">
+                <button class="poll-page-complete" type="button">I've voted</button>
+                <span class="poll-page-status" aria-live="polite"></span>
+            </div>
+        </section>
+    </main>
+    <footer class="portal-footer"><div class="portal-footer-inner"><p>Student Notes Hub · Polls</p><p><a href="index.html">← Back to Home</a></p></div></footer>
+</body>
+</html>
