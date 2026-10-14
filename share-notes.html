@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Share Your Notes | Student Notes Hub</title>
+      <script>
+        (function(){try{var t=localStorage.getItem('my-portfolio-theme');if(t==='bright'){document.documentElement.dataset.theme='bright';document.documentElement.style.colorScheme='light';}else{document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark';}}catch(e){document.documentElement.dataset.theme='dark';}})();
+    </script>
+<title>Share Your Notes | Student Notes Hub</title>
 
   <style>
     * { box-sizing: border-box; }
@@ -94,6 +97,8 @@
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="share-notes-theme.css">
+    <script defer src="theme.js"></script>
 </head>
 
 <body>

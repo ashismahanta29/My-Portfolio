@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function(){try{var t=localStorage.getItem('my-portfolio-theme');if(t==='bright'){document.documentElement.dataset.theme='bright';document.documentElement.style.colorScheme='light';}else{document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark';}}catch(e){document.documentElement.dataset.theme='dark';}})();
+    </script>
     <title>AEDP Student Hub | Notes & Study Materials</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -258,6 +261,8 @@ nav a:focus-visible,
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="bright-mode.css">
+    <script defer src="theme.js"></script>
 </head>
 
 <body>
