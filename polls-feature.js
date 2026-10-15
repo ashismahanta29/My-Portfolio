@@ -2,8 +2,52 @@
     "use strict";
 
     const completionKey = "student-hub-poll-completed";
-    const pollsEnabled = false;
-    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?embedded=true";
+    const inviteDismissalKey = "student-hub-home-poll-popup-dismissed-v1";
+    function activateIframeFallback() {
+        document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (frame) {
+            frame.src = frame.dataset.tallySrc;
+            frame.dataset.tallyFallbackMode = "true";
+        });
+    }
+
+    function loadTallyEmbeds() {
+        if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
+            try { window.Tally.loadEmbeds(); }
+            catch (error) { activateIframeFallback(); }
+            return;
+        }
+
+        let script = document.querySelector('script[data-tally-widget]');
+        if (!script) {
+            script = document.createElement("script");
+            script.src = "https://tally.so/widgets/embed.js";
+            script.async = true;
+            script.dataset.tallyWidget = "true";
+            document.head.append(script);
+        }
+
+        let finished = false;
+        const finishWithFallback = function () {
+            if (finished) return;
+            finished = true;
+            window.clearTimeout(fallbackTimer);
+            activateIframeFallback();
+        };
+        const finishWithTally = function () {
+            if (finished) return;
+            if (!window.Tally || typeof window.Tally.loadEmbeds !== "function") {
+                finishWithFallback();
+                return;
+            }
+            finished = true;
+            window.clearTimeout(fallbackTimer);
+            try { window.Tally.loadEmbeds(); }
+            catch (error) { activateIframeFallback(); }
+        };
+        const fallbackTimer = window.setTimeout(finishWithFallback, 10000);
+        script.addEventListener("load", finishWithTally, { once: true });
+        script.addEventListener("error", finishWithFallback, { once: true });
+    }
 
     function hasCompletedPoll() {
         try { return localStorage.getItem(completionKey) === "1"; }
@@ -12,7 +56,23 @@
 
     function markPollCompleted() {
         try { localStorage.setItem(completionKey, "1"); }
-        catch (error) { /* Confirmation still closes the dialog for this visit. */ }
+        catch (error) { /* Confirmation remains available for this visit. */ }
+    }
+
+    function hasDismissedInvite() {
+        try { return localStorage.getItem(inviteDismissalKey) === "1"; }
+        catch (error) {
+            try { return sessionStorage.getItem(inviteDismissalKey) === "1"; }
+            catch (storageError) { return false; }
+        }
+    }
+
+    function rememberInviteDismissal() {
+        try { localStorage.setItem(inviteDismissalKey, "1"); }
+        catch (error) {
+            try { sessionStorage.setItem(inviteDismissalKey, "1"); }
+            catch (storageError) { /* The popup still closes when storage is unavailable. */ }
+        }
     }
 
     function bindPageConfirmation() {
@@ -24,52 +84,48 @@
             button.disabled = true;
             button.textContent = "Thanks for confirming!";
             const status = document.querySelector(".poll-page-status");
-            if (status) status.textContent = "Your poll completion has been saved on this device.";
+            if (status) status.textContent = "Your manual confirmation has been saved on this device.";
         });
     }
 
     function mountInvite() {
-        if (!pollsEnabled) return;
         const pageName = window.location.pathname.split("/").pop();
         if (pageName && pageName !== "index.html") return;
-        if (hasCompletedPoll()) return;
+        if (hasDismissedInvite()) return;
 
         const dialog = document.createElement("dialog");
         dialog.className = "poll-invite";
         dialog.setAttribute("aria-labelledby", "poll-invite-title");
         dialog.setAttribute("aria-describedby", "poll-invite-copy");
         dialog.innerHTML = `
-            <div class="poll-invite-head">
-                <div><h2 id="poll-invite-title">Have a moment to share your thoughts?</h2>
-                <p class="poll-invite-copy" id="poll-invite-copy">Take part in our quick student poll. You can also visit it later from Polls in the navigation.</p></div>
-                <button class="poll-invite-close" type="button" aria-label="Close poll invitation">&times;</button>
-            </div>
-            <iframe class="poll-invite-frame" title="Student poll Google Form" loading="lazy"></iframe>
+          <button class="poll-invite-close" type="button" aria-label="Cancel poll invitation">×</button>
+          <div class="poll-invite-content">
+            <h2 id="poll-invite-title">Your Voice Matters!</h2>
+            <p class="poll-invite-copy" id="poll-invite-copy">Help improve Notes Hub by sharing your feedback.</p>
             <div class="poll-invite-actions">
-                <button class="poll-invite-secondary" type="button">Not Now</button>
-                <button class="poll-invite-complete" type="button">I've voted</button>
-                <a href="polls.html">Open Polls page</a>
-            </div>`;
+              <a class="poll-invite-vote" href="polls.html">Vote Now</a>
+              <button class="poll-invite-later" type="button">Later</button>
+            </div>
+          </div>`;
 
-        const close = function () { dialog.close(); };
-        dialog.querySelector(".poll-invite-complete").addEventListener("click", function () {
-            markPollCompleted();
-            close();
-        });
-        dialog.querySelector(".poll-invite-frame").src = formUrl;
+        const close = function () {
+            rememberInviteDismissal();
+            dialog.close();
+        };
+        dialog.querySelector(".poll-invite-vote").addEventListener("click", close);
         dialog.querySelector(".poll-invite-close").addEventListener("click", close);
-        dialog.querySelector(".poll-invite-secondary").addEventListener("click", close);
-        dialog.addEventListener("cancel", function () { close(); });
+        dialog.querySelector(".poll-invite-later").addEventListener("click", close);
+        dialog.addEventListener("cancel", function (event) { event.preventDefault(); close(); });
         dialog.addEventListener("click", function (event) {
             if (event.target === dialog) close();
         });
         document.body.append(dialog);
-
         dialog.showModal();
     }
 
     function initialize() {
         bindPageConfirmation();
+        if (document.querySelector('iframe[data-tally-src]')) loadTallyEmbeds();
         mountInvite();
     }
 

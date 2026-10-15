@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="notes-portal.css">
     <link rel="stylesheet" href="bright-mode.css">
+    <link rel="stylesheet" href="share-notes-theme.css">
     <link rel="stylesheet" href="polls-feature.css">
     <script defer src="theme.js"></script>
     <script defer src="polls-feature.js"></script>
@@ -27,27 +28,23 @@
         <a href="about.html">About Me</a>
         <a href="contact.html">Contact</a>
     </nav>
-    <header class="portal-hero">
-        <div class="portal-hero-inner">
-            <p class="portal-kicker">Student Notes Hub</p>
-            <h1>Polls</h1>
-            <p class="portal-hero-copy">Polls are temporarily unavailable.</p>
-        </div>
-    </header>
-    <main class="portal-main">
-        <section class="poll-page-unavailable" role="status" aria-live="polite">
-            <p>Polls are temporarily unavailable. Please check back later.</p>
-        </section>
-        <template id="poll-page-form">
-        <section class="poll-page-card" aria-label="Student poll">
-            <iframe class="poll-page-frame" title="Student poll Google Form" src="https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?embedded=true" loading="lazy">Loading…</iframe>
-            <p class="poll-page-note">If the form does not load, <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?usp=sharing&amp;ouid=107021353569079846453" target="_blank" rel="noopener">open it in Google Forms</a>.</p>
+    <main class="container">
+        <h1>Polls</h1>
+        <p class="hint">Share your perspective and help shape the Student Notes Hub. Your response goes directly to our student poll.</p>
+
+        <section class="card share-notes-form-card poll-form-card" aria-label="Student poll">
+            <h2>Notes Hub — Your Voice Matters!</h2>
+            <p class="hint">Answer the questions below to cast your vote.</p>
+            <div class="tally-frame-shell poll-tally-shell">
+                <iframe class="tally-embed poll-tally-embed" data-tally-src="https://tally.so/embed/Dq2kXZ?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="eager" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0" title="Notes Hub poll"></iframe>
+            </div>
+            <p class="hint poll-tally-fallback">If the poll does not load, <a href="https://tally.so/r/Dq2kXZ" target="_blank" rel="noopener noreferrer">open the poll directly</a>.</p>
             <div class="poll-page-confirm">
                 <button class="poll-page-complete" type="button">I've voted</button>
                 <span class="poll-page-status" aria-live="polite"></span>
             </div>
         </section>
-        </template>
+        <p class="hint poll-manual-note">“I’ve voted” is a manual confirmation saved on this device; the website can’t verify Tally submissions automatically.</p>
     </main>
     <footer class="portal-footer"><div class="portal-footer-inner"><p>Student Notes Hub · Polls</p><p><a href="index.html">← Back to Home</a></p></div></footer>
 </body>
