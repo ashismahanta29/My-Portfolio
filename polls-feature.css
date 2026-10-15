@@ -1,7 +1,17 @@
 /* Poll-specific sizing; the page card and form shell reuse Share Notes styles. */
+.polls-page .container {
+    width: min(100%, 1040px);
+    max-width: 1040px;
+    margin-inline: auto;
+    padding: clamp(18px, 3vw, 30px);
+}
+
 .poll-form-card,
 .poll-form-card:hover {
+    width: 100%;
+    max-width: 980px;
     margin-top: clamp(24px, 4vw, 38px);
+    padding: clamp(22px, 3vw, 28px);
 }
 
 .poll-form-card > h2,
@@ -123,7 +133,7 @@
 
 @media (max-width: 600px) {
     .poll-form-card,
-    .poll-form-card:hover { margin: 22px auto; padding: 12px; border-radius: 18px; }
+    .poll-form-card:hover { margin: 22px auto; padding: 16px; border-radius: 18px; }
     .poll-form-card > h2,
     .poll-form-card > .hint { width: calc(100% - 20px); }
     .poll-tally-shell { border-radius: 14px; }
