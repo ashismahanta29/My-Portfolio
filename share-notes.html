@@ -60,37 +60,6 @@
       text-align: center;
     }
 
-    .choices {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
-    }
-
-    label { display: block; margin: 14px 0 7px; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #465780;
-      border-radius: 9px;
-      color: white;
-      background: #0b1228;
-    }
-
-    input[type="file"] { padding: 10px; }
-
-    button {
-      width: 100%;
-      margin-top: 18px;
-      padding: 13px;
-      border: 0;
-      border-radius: 9px;
-      color: white;
-      background: linear-gradient(90deg, #477fff, #9060ed);
-      font-weight: bold;
-      cursor: pointer;
-    }
-
     .hint { color: #bdc9e8; font-size: 14px; line-height: 1.6; }
 
     @media (max-width: 500px) {
@@ -125,88 +94,26 @@
     Every submission must be reviewed before publication.
   </p>
 
-  <div class="choices">
-    <section class="card">
-      <h2>🔗 Share a Link</h2>
-      <p class="hint">Share a Google Drive or other accessible notes link.</p>
-
-      <form action="https://forminit.com/f/5tmq5we196e"
-            method="POST">
-        <input type="hidden" name="fi-text-submission_type"
-               value="Notes link for review">
-
-        <label for="link-name">Name (optional)</label>
-        <input id="link-name" name="fi-text-contributor"
-               maxlength="80">
-
-        <label for="link-subject">Subject</label>
-        <input id="link-subject" name="fi-text-subject"
-               required maxlength="120">
-
-        <label for="link-url">Notes link</label>
-        <input id="link-url" type="url"name="fi-url-notes_link"
-               placeholder="https://..." required>
-
-        <label for="link-description">Description (optional)</label>
-        <textarea id="link-description" name="fi-text-description"
-                  rows="3" maxlength="1000"></textarea>
-
-        <label>
-          <input type="checkbox" name="fi-checkbox-permission"
-                 value="yes" required style="width:auto">
-          I have permission to share these notes.
-        </label>
-
-        <button type="submit">Send Link for Review</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>📁 Upload Files</h2>
-      <p class="hint">
-        Choose files directly from your phone or computer.
-        No email field is required.
-      </p>
-
-      <form action="https://forminit.com/f/5tmq5we196e"
-            method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="fi-text-submission_type"
-               value="Uploaded notes for review">
-
-        <label for="file-name">Name (optional)</label>
-        <input id="file-name " name="fi-text-contributor"
-               maxlength="80">
-
-        <label for="file-subject">Subject</label>
-        <input id="file-subject" name="fi-text-subject"
-               required maxlength="120">
-
-        <label for="notes-files">Select notes files</label>
-        <input id="notes-files" type="file" name="fi-file-attachments[]"
-               accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
-               multiple required>
-
-        <p class="hint">
-          Use PDF, Word, PowerPoint or image files.
-          Upload limits depend on the form service and plan.
-        </p>
-
-        <label>
-          <input type="checkbox" name="fi-checkbox-permission"
-                 value="yes" required style="width:auto">
-          I have permission to share these notes.
-        </label>
-
-        <button type="submit">Upload for Review</button>
-      </form>
-    </section>
-  </div>
+  <section class="card share-notes-form-card" aria-label="Share notes submission form">
+    <h2>Submit your notes</h2>
+    <p class="hint">Complete the form below to share your notes for review.</p>
+    <div class="tally-frame-shell">
+      <iframe class="tally-embed"
+              src="https://tally.so/embed/q5Zax7?alignLeft=1&amp;hideTitle=1&amp;dynamicHeight=1"
+              title="Share your notes with Student Notes Hub"
+              loading="lazy" width="100%" height="1000"
+              frameborder="0" marginheight="0" marginwidth="0"></iframe>
+    </div>
+    <p class="hint">If the form does not load, <a class="fallback-link"
+       href="https://tally.so/r/q5Zax7" target="_blank" rel="noopener noreferrer">open the Tally form in a new tab</a>.</p>
+  </section>
 
   <p class="hint">
     Submissions are contributions, not automatic publications.
     Only approved materials will be added to the Notes Hub.
   </p>
 </main>
+<script async src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
  
