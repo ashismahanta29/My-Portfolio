@@ -39,16 +39,6 @@
 .poll-tally-fallback { margin: 10px 4px 0 !important; color: var(--portal-muted); font-size: .84rem !important; text-align: center; }
 .poll-tally-fallback a { color: var(--portal-cyan); }
 
-.poll-page-confirm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 16px auto 0;
-}
-
-.poll-page-complete,
 .poll-invite-actions button {
     min-height: 42px;
     padding: 9px 15px;
@@ -60,10 +50,7 @@
     cursor: pointer;
 }
 
-.poll-page-complete:disabled { opacity: .76; cursor: default; }
-.poll-page-status { flex-basis: 100%; color: var(--portal-muted); font-size: .88rem; text-align: center; }
-.poll-page-complete:focus-visible, .poll-invite button:focus-visible { outline: 3px solid var(--portal-focus); outline-offset: 3px; }
-.poll-manual-note { margin: 18px auto 0 !important; font-size: .85rem !important; }
+.poll-invite button:focus-visible { outline: 3px solid var(--portal-focus); outline-offset: 3px; }
 
 .poll-invite[open] {
     position: fixed;

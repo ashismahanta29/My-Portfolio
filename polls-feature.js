@@ -1,7 +1,6 @@
 (function () {
     "use strict";
 
-    const completionKey = "student-hub-poll-completed";
     const inviteDismissalKey = "student-hub-home-poll-popup-dismissed-v1";
     function activateIframeFallback() {
         document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (frame) {
@@ -49,16 +48,6 @@
         script.addEventListener("error", finishWithFallback, { once: true });
     }
 
-    function hasCompletedPoll() {
-        try { return localStorage.getItem(completionKey) === "1"; }
-        catch (error) { return false; }
-    }
-
-    function markPollCompleted() {
-        try { localStorage.setItem(completionKey, "1"); }
-        catch (error) { /* Confirmation remains available for this visit. */ }
-    }
-
     function hasDismissedInvite() {
         try { return localStorage.getItem(inviteDismissalKey) === "1"; }
         catch (error) {
@@ -73,19 +62,6 @@
             try { sessionStorage.setItem(inviteDismissalKey, "1"); }
             catch (storageError) { /* The popup still closes when storage is unavailable. */ }
         }
-    }
-
-    function bindPageConfirmation() {
-        const button = document.querySelector(".poll-page-complete");
-        if (!button) return;
-
-        button.addEventListener("click", function () {
-            markPollCompleted();
-            button.disabled = true;
-            button.textContent = "Thanks for confirming!";
-            const status = document.querySelector(".poll-page-status");
-            if (status) status.textContent = "Your manual confirmation has been saved on this device.";
-        });
     }
 
     function mountInvite() {
@@ -124,7 +100,6 @@
     }
 
     function initialize() {
-        bindPageConfirmation();
         if (document.querySelector('iframe[data-tally-src]')) loadTallyEmbeds();
         mountInvite();
     }
