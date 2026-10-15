@@ -143,6 +143,7 @@
         .contribution-subjects { display: grid; gap: 12px; }
         .contribution-subject { padding: 16px; border: 1px solid var(--portal-line); border-radius: 13px; background: rgba(10, 11, 19, 0.48); }
         .contribution-subject > h3 { margin: 0; font-family: "Space Grotesk", Inter, sans-serif; font-size: 1.05rem; }
+        .contribution-subject-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .contribution-subject > p { margin: 4px 0 8px; color: var(--portal-muted); font-size: 0.9rem; }
         .contribution-card-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 12px; }
         .contribution-card-grid .portal-card { min-width: 0; min-height: 148px; padding: 16px; border-radius: 14px; }
@@ -328,11 +329,22 @@
                 section.className = "contribution-subject";
 
                 const heading = document.createElement("h3");
-                heading.append(document.createTextNode(subjectName + " "));
+                heading.className = "contribution-subject-heading";
+                const headingText = document.createElement("span");
+                headingText.textContent = subjectName;
                 const count = document.createElement("span");
                 count.setAttribute("aria-label", subjectNotes.length + " notes");
-                count.textContent = "· " + subjectNotes.length + " notes";
-                heading.append(count);
+                count.textContent = " · " + subjectNotes.length + " notes";
+                headingText.append(" ", count);
+
+                const listId = "contribution-list-" + Array.from(bySubject.keys()).indexOf(subjectName);
+                const toggle = document.createElement("button");
+                toggle.type = "button";
+                toggle.className = "contribution-list-toggle";
+                toggle.textContent = ">";
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.setAttribute("aria-controls", listId);
+                toggle.setAttribute("aria-label", "Expand resources for " + subjectName);
 
                 const description = document.createElement("p");
                 description.textContent = subjectName === "Organizational Behaviour"
@@ -340,10 +352,21 @@
                     : "Published materials";
 
                 const grid = document.createElement("div");
-                grid.className = "portal-grid contribution-card-grid";
+                grid.className = "portal-grid contribution-card-grid contribution-resource-list";
+                grid.id = listId;
+                grid.setAttribute("aria-hidden", "true");
+                grid.setAttribute("aria-label", "Resources for " + subjectName);
                 subjectNotes.forEach(function (note) { grid.append(makeContributionCard(note)); });
 
+                heading.append(headingText, toggle);
                 section.append(heading, description, grid);
+                toggle.addEventListener("click", function () {
+                    const open = toggle.getAttribute("aria-expanded") === "true";
+                    toggle.setAttribute("aria-expanded", String(!open));
+                    toggle.setAttribute("aria-label", (open ? "Expand resources for " : "Collapse resources for ") + subjectName);
+                    grid.setAttribute("aria-hidden", String(open));
+                    grid.style.maxHeight = open ? "0px" : grid.scrollHeight + "px";
+                });
                 contributionSubjects.append(section);
             });
         }

@@ -256,6 +256,132 @@ nav a:focus-visible,
     }
 }
 
+/* =========================================
+   HOME PAGE — BRIGHT MODE FIX
+   ========================================= */
+
+:root[data-theme="bright"] body {
+    color: #24213a;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(139, 92, 246, 0.10), transparent 42%),
+        radial-gradient(ellipse at 85% 35%, rgba(96, 165, 250, 0.12), transparent 45%),
+        #f6f7fc;
+    background-attachment: fixed;
+}
+
+:root[data-theme="bright"] body > nav {
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom-color: rgba(126, 103, 185, 0.20);
+    box-shadow: 0 8px 25px rgba(48, 58, 93, 0.08);
+}
+
+:root[data-theme="bright"] body > nav a {
+    color: #5540a5;
+}
+
+:root[data-theme="bright"] body > nav a:hover {
+    color: #382477;
+    background: rgba(139, 92, 246, 0.09);
+    border-color: rgba(126, 103, 185, 0.22);
+}
+
+:root[data-theme="bright"] body > header {
+    background:
+        radial-gradient(ellipse at 50% 35%, rgba(139, 92, 246, 0.13), transparent 65%),
+        radial-gradient(ellipse at 15% 50%, rgba(59, 130, 246, 0.08), transparent 55%);
+}
+
+:root[data-theme="bright"] body > header h1 {
+    background: linear-gradient(100deg, #35216e, #7652d1, #3476b9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+:root[data-theme="bright"] body > header p {
+    color: #5d6075;
+}
+
+:root[data-theme="bright"] main > h2 {
+    color: #49328e;
+}
+
+:root[data-theme="bright"] main > p {
+    color: #5d6075;
+}
+
+/* Home page community and About cards */
+:root[data-theme="bright"] .community-section,
+:root[data-theme="bright"] .about-section {
+    border-color: rgba(126, 103, 185, 0.22);
+    background: linear-gradient(145deg, #ffffff, #f2f3ff);
+    box-shadow: 0 12px 32px rgba(48, 58, 93, 0.08);
+}
+
+:root[data-theme="bright"] .community-section h2 {
+    color: #35216e;
+}
+
+:root[data-theme="bright"] .community-section > p:not(.community-note),
+:root[data-theme="bright"] .about-section > p:not(.about-kicker) {
+    color: #555970;
+}
+
+:root[data-theme="bright"] .about-kicker {
+    color: #6244b3;
+}
+
+:root[data-theme="bright"] .about-section h2 {
+    background: linear-gradient(100deg, #35216e 10%, #7652d1 52%, #3476b9 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+:root[data-theme="bright"] .community-note {
+    color: #5540a5 !important;
+    background: #f0edff;
+    border-color: rgba(126, 103, 185, 0.22);
+}
+
+:root[data-theme="bright"] .about-link {
+    color: #5540a5;
+    border-color: rgba(126, 103, 185, 0.28);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+:root[data-theme="bright"] .about-link:hover {
+    color: #382477;
+    background: #eee9ff;
+}
+
+/* Footer and visit counter */
+:root[data-theme="bright"] body > footer {
+    color: #62647a;
+    border-top-color: rgba(126, 103, 185, 0.20);
+    background: rgba(255, 255, 255, 0.55);
+}
+
+:root[data-theme="bright"] body > footer a {
+    color: #5540a5;
+}
+
+:root[data-theme="bright"] .visit-counter {
+    color: #555970;
+    border-color: rgba(126, 103, 185, 0.22);
+    background: linear-gradient(135deg, #ffffff, #f0edff);
+    box-shadow: 0 5px 18px rgba(48, 58, 93, 0.06);
+}
+
+:root[data-theme="bright"] .visit-counter strong,
+:root[data-theme="bright"] .visit-counter .counterapi {
+    color: #49328e;
+}
+
+:root[data-theme="bright"] .visit-counter a {
+    color: #3476b9;
+}
+
     </style>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -424,3 +550,4 @@ nav a:focus-visible,
     </script>
 </body>
 </html>
+a

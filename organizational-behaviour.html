@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="notes-portal.css">
+    <script defer src="subject-catalog.js"></script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -38,9 +39,9 @@
         </div>
     </header>
     <main class="portal-main portal-detail">
-        <div class="portal-detail-topline"><a class="portal-back-link" href="notes.html">← Back to Student Notes Hub</a></div>
+        <div class="portal-detail-topline"><a class="portal-back-link" href="notes.html"><span aria-hidden="true">←</span><span>Back to Student Notes Hub</span></a></div>
         <section class="portal-detail-panel" aria-labelledby="materials-heading">
-            <h2 class="portal-section-heading">Organizational Behaviour</h2>
+            <h2 class="portal-section-heading" data-catalog-subject="Organizational Behaviour">Organizational Behaviour</h2>
             <p class="portal-code">OB · Core 1.1</p>
             <p class="portal-detail-intro">Browse the materials currently listed for this subject.</p>
             <nav class="resource-category-nav" aria-label="Resource categories">
@@ -49,67 +50,21 @@
                 <a class="resource-category-link" href="#notes">Notes</a>
                 <a class="resource-category-link" href="#pyqs">PYQs</a>
             </nav>
-        
-<section class="resource-section" id="syllabus" aria-labelledby="syllabus-heading">
-    <h2 id="syllabus-heading">Syllabus</h2>
-
-    <article class="portal-material-card">
-        <h3>Syllabus OB</h3>
-        <p>PDF document</p>
-        <div class="portal-actions">
-            <a class="portal-action" href="notes/Syllabus%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-            <a class="portal-action" href="notes/Syllabus%20OB.pdf" download>Download PDF</a>
-        </div>
-    </article>
-</section>
-
-            <section class="resource-section" id="chapters" aria-labelledby="chapters-heading">
-            
-<h2 id="chapters-heading">Chapters</h2>
-
-<article class="portal-material-card">
-    <h3>Chapter 1 OB</h3>
-    <p>PDF document</p>
-    <div class="portal-actions">
-        <a class="portal-action" href="notes/Chapter%201%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-        <a class="portal-action" href="notes/Chapter%201%20OB.pdf" download>Download PDF</a>
-    </div>
-</article>
-
-<article class="portal-material-card">
-    <h3>Chapter 2 OB</h3>
-    <p>PDF document</p>
-    <div class="portal-actions">
-        <a class="portal-action" href="notes/Chapter%202%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-        <a class="portal-action" href="notes/Chapter%202%20OB.pdf" download>Download PDF</a>
-    </div>
-</article>
-
-<article class="portal-material-card">
-    <h3>Chapter 3 OB</h3>
-    <p>PDF document</p>
-    <div class="portal-actions">
-        <a class="portal-action" href="notes/Chapter%203%20OB%20(2).pdf" target="_blank" rel="noopener">View PDF</a>
-        <a class="portal-action" href="notes/Chapter%203%20OB%20(2).pdf" download>Download PDF</a>
-    </div>
-</article>
-
-<article class="portal-material-card">
-    <h3>Chapter 4 OB</h3>
-    <p>PDF document</p>
-    <div class="portal-actions">
-        <a class="portal-action" href="notes/Chapter%204%20OB.pdf" target="_blank" rel="noopener">View PDF</a>
-        <a class="portal-action" href="notes/Chapter%204%20OB.pdf" download>Download PDF</a>
-    </div>
-</article>
+            <section class="resource-section" id="syllabus" aria-labelledby="syllabus-heading" data-category="Syllabus">
+                <h2 id="syllabus-heading">Syllabus</h2>
+                <div class="resource-list" id="syllabus-list"></div>
             </section>
-            <section class="resource-section" id="notes" aria-labelledby="notes-heading">
+            <section class="resource-section" id="chapters" aria-labelledby="chapters-heading" data-category="Chapters">
+                <h2 id="chapters-heading">Chapters</h2>
+                <div class="resource-list" id="chapters-list"></div>
+            </section>
+            <section class="resource-section" id="notes" aria-labelledby="notes-heading" data-category="Notes">
                 <h2 id="notes-heading">Notes</h2>
-                <p class="resource-empty">Resources coming soon. Check back as materials are added.</p>
+                <div class="resource-list" id="notes-list"></div>
             </section>
-            <section class="resource-section" id="pyqs" aria-labelledby="pyqs-heading">
+            <section class="resource-section" id="pyqs" aria-labelledby="pyqs-heading" data-category="PYQs">
                 <h2 id="pyqs-heading">PYQs <span class="portal-code">Previous Year Questions</span></h2>
-                <p class="resource-empty">Resources coming soon. Check back as materials are added.</p>
+                <div class="resource-list" id="pyqs-list"></div>
             </section>
         </section>
     </main>
