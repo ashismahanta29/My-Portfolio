@@ -76,7 +76,8 @@
     -webkit-background-clip: text;
     background-clip: text;
 }
-:root[data-theme="bright"] .portal-kicker { color: #087e9b; }
+:root[data-theme="bright"] .portal-kicker,
+:root[data-theme="bright"] .portal-code { color: #08677d; }
 :root[data-theme="bright"] .portal-hero-copy,
 :root[data-theme="bright"] .portal-section-copy,
 :root[data-theme="bright"] .portal-card-copy,
@@ -151,9 +152,9 @@
 :root[data-theme="bright"] .about-fact,
 :root[data-theme="bright"] .interest-list li,
 :root[data-theme="bright"] .contributor-roll,
-:root[data-theme="bright"] .contribution-subject ul,
-:root[data-theme="bright"] .education-name { color: #37445d !important; }
+:root[data-theme="bright"] .contribution-subject ul { color: #37445d !important; }
 :root[data-theme="bright"] .education-name { color: #202944 !important; }
+:root[data-theme="bright"] .contributor-roll strong { color: #202944; }
 :root[data-theme="bright"] .about-fact,
 :root[data-theme="bright"] .interest-list li { background: rgba(255,255,255,.64); border-color: rgba(122,94,190,.18); }
 :root[data-theme="bright"] .about-icon,

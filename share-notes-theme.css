@@ -138,14 +138,14 @@ body:has(.portal-nav) {
 :root[data-theme="bright"] .card select,
 :root[data-theme="bright"] .card textarea { border-color: rgba(122,94,190,.24); background: rgba(255,255,255,.78); color: #202944; box-shadow: inset 0 1px 3px rgba(40,52,83,.04); }
 :root[data-theme="bright"] .card input::placeholder,
-:root[data-theme="bright"] .card textarea::placeholder { color: #768197; }
+:root[data-theme="bright"] .card textarea::placeholder { color: #5f6a80; }
 :root[data-theme="bright"] .container > h1 { background-image: linear-gradient(105deg, #30235f 10%, #7551cc 54%, #1388a3 100%); color: transparent; }
 :root[data-theme="bright"] label { color: #303b53; }
 :root[data-theme="bright"] input,
 :root[data-theme="bright"] select,
 :root[data-theme="bright"] textarea { border-color: rgba(122,94,190,.24); background: rgba(255,255,255,.78); color: #202944; box-shadow: inset 0 1px 3px rgba(40,52,83,.04); }
 :root[data-theme="bright"] input::placeholder,
-:root[data-theme="bright"] textarea::placeholder { color: #768197; }
+:root[data-theme="bright"] textarea::placeholder { color: #5f6a80; }
 :root[data-theme="bright"] input:focus-visible,
 :root[data-theme="bright"] select:focus-visible,
 :root[data-theme="bright"] textarea:focus-visible,
