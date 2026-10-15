@@ -2,6 +2,7 @@
     "use strict";
 
     const completionKey = "student-hub-poll-completed";
+    const pollsEnabled = false;
     const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScJwdSt8z7Y1ka2jEAlpoBzx5uCh3bnejWU_ehcbvvFny8INw/viewform?embedded=true";
 
     function hasCompletedPoll() {
@@ -28,6 +29,7 @@
     }
 
     function mountInvite() {
+        if (!pollsEnabled) return;
         const pageName = window.location.pathname.split("/").pop();
         if (pageName && pageName !== "index.html") return;
         if (hasCompletedPoll()) return;

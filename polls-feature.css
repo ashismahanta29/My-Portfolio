@@ -31,6 +31,18 @@
 .polls-page .portal-hero-copy { margin-top: 6px; color: var(--poll-muted); font-size: .96rem; }
 .polls-page .portal-main { padding-top: 10px; }
 
+.poll-page-unavailable {
+    padding: 24px;
+    border: 1px solid var(--poll-line);
+    border-radius: 14px;
+    color: var(--poll-text);
+    background: var(--poll-surface);
+    box-shadow: 0 5px 18px rgba(28, 22, 42, .09);
+    text-align: center;
+}
+
+.poll-page-unavailable p { margin: 0; color: var(--poll-muted); }
+
 .poll-page-card {
     overflow: hidden;
     border: 1px solid var(--poll-line);
