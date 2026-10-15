@@ -4,8 +4,8 @@
     const availabilityLabels = Array.from(document.querySelectorAll("[data-material-availability]"));
     if (availabilityLabels.length === 0) return;
 
-    const scriptUrl = document.currentScript && document.currentScript.src;
-    const catalogUrl = new URL("notes-catalog.json", scriptUrl || window.location.href);
+    // Resolve beside the current page so GitHub Pages project sites keep their /My-Portfolio/ base path.
+    const catalogUrl = new URL("notes-catalog.json", window.location.href);
 
     function normalizeSubject(subject) {
         return String(subject || "").trim().replace(/\s+/g, " ").toLocaleLowerCase();

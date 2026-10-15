@@ -21,23 +21,6 @@
         linear-gradient(145deg, #fbfcff, #f2f5fb 58%, #fff9fc);
 }
 
-:root[data-theme="bright"] body:has(.portal-card) nav {
-    border-bottom-color: rgba(126, 103, 185, .18);
-    background: rgba(255,255,255,.78);
-    box-shadow: 0 8px 28px rgba(50,61,93,.08), inset 0 1px #fff;
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
-}
-:root[data-theme="bright"] body:has(.portal-card) {
-    color: #202944;
-    background:
-        radial-gradient(ellipse at 12% 5%, rgba(185,163,255,.2), transparent 34rem),
-        radial-gradient(ellipse at 92% 26%, rgba(101,216,226,.15), transparent 32rem),
-        linear-gradient(145deg,#fbfcff,#f2f5fb 58%,#fff9fc);
-    transition: background-color 260ms ease, color 260ms ease;
-}
-:root[data-theme="bright"] body:has(.portal-card) nav a { color: #51418f; }
-:root[data-theme="bright"] body:has(.portal-card) nav a:hover { color: #30236e; background: rgba(143,112,226,.1); }
 :root[data-theme="bright"] body:has(.portal-card) header#home { background: radial-gradient(ellipse at 50% 35%, rgba(154,126,235,.16), transparent 65%); }
 :root[data-theme="bright"] body:has(.portal-card) header#home h1 {
     background-image: linear-gradient(90deg, #31235f, #704bc2 55%, #087e9b);
@@ -94,24 +77,6 @@
 :root[data-theme="bright"] .portal-relevance-note,
 :root[data-theme="bright"] .portal-footer { color: #566176; }
 
-:root[data-theme="bright"] .portal-card,
-:root[data-theme="bright"] .portal-detail-panel,
-:root[data-theme="bright"] .about-profile,
-:root[data-theme="bright"] .about-card,
-:root[data-theme="bright"] .contributor-profile,
-:root[data-theme="bright"] .contact-card,
-:root[data-theme="bright"] .about-section,
-:root[data-theme="bright"] .community-section {
-    border: 1px solid transparent;
-    background: linear-gradient(145deg, rgba(255,255,255,.91), rgba(250,251,255,.76)) padding-box, var(--bright-rim) border-box;
-    box-shadow: var(--bright-shadow);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-}
-:root[data-theme="bright"] .portal-card::before,
-:root[data-theme="bright"] .about-profile::before,
-:root[data-theme="bright"] .about-card::before,
-:root[data-theme="bright"] .contributor-profile::before { height: 3px; opacity: .82; background: var(--bright-rim); }
 :root[data-theme="bright"] .portal-card h3,
 :root[data-theme="bright"] .portal-detail-panel h1,
 :root[data-theme="bright"] .about-card h2,
@@ -168,80 +133,133 @@
 :root[data-theme="bright"] .contact-icon { color: #5840b3; background: linear-gradient(145deg, rgba(151,119,232,.14), rgba(75,194,209,.12)); border-color: rgba(111,85,184,.22); }
 :root[data-theme="bright"] .community-note { color: #5540b2 !important; background: rgba(146,119,226,.09); }
 
-/* Neutral card surfaces for both themes; retain card geometry and content. */
-.portal-card,
-.portal-detail-panel,
-.portal-material-card,
-.about-profile,
-.about-card,
-.contributor-profile,
-.future-contributor,
-.contact-card,
-.about-section,
-.community-section,
-.project-card,
-#education .education-card,
-.card {
-    background: rgba(128, 140, 160, .055) !important;
-    border-color: rgba(128, 140, 160, .3) !important;
-    box-shadow: none !important;
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+/* Bright surfaces use a quiet glass finish; the dark theme keeps its base rules. */
+:root[data-theme="bright"] .portal-card,
+:root[data-theme="bright"] .portal-detail-panel,
+:root[data-theme="bright"] .portal-material-card,
+:root[data-theme="bright"] .about-profile,
+:root[data-theme="bright"] .about-card,
+:root[data-theme="bright"] .contributor-profile,
+:root[data-theme="bright"] .future-contributor,
+:root[data-theme="bright"] .contact-card,
+:root[data-theme="bright"] .about-section,
+:root[data-theme="bright"] .community-section,
+:root[data-theme="bright"] .project-card,
+:root[data-theme="bright"] #education .education-card,
+:root[data-theme="bright"] .card {
+    border: 1px solid rgba(126, 103, 185, .2);
+    background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(248,250,255,.9)) padding-box, var(--bright-rim) border-box;
+    box-shadow: 0 16px 38px rgba(49, 62, 100, .10), 0 3px 10px rgba(49, 62, 100, .045), inset 0 1px rgba(255,255,255,.98);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
-.portal-card::before,
-.portal-card::after,
-.about-profile::before,
-.about-profile::after,
-.about-card::before,
-.about-card::after,
-.contributor-profile::before,
-.contributor-profile::after,
-.future-contributor::before,
-.future-contributor::after,
-.contact-card::before,
-.contact-card::after,
-.about-section::before,
-.about-section::after,
-.community-section::before,
-.community-section::after,
-.project-card::before,
-.project-card::after,
-#education .education-card::before,
-#education .education-card::after,
-.card::before,
-.card::after {
-    display: none !important;
-    background: none !important;
-    box-shadow: none !important;
+:root[data-theme="bright"] .portal-detail-panel > *,
+:root[data-theme="bright"] .portal-material-card > * { position: relative; z-index: 1; }
+:root[data-theme="bright"] .portal-card,
+:root[data-theme="bright"] .about-profile,
+:root[data-theme="bright"] .about-card,
+:root[data-theme="bright"] .contributor-profile,
+:root[data-theme="bright"] .future-contributor,
+:root[data-theme="bright"] .contact-card,
+:root[data-theme="bright"] .about-section,
+:root[data-theme="bright"] .community-section,
+:root[data-theme="bright"] .project-card,
+:root[data-theme="bright"] #education .education-card,
+:root[data-theme="bright"] .card {
+    position: relative;
+    isolation: isolate;
 }
-.portal-card:hover,
-.portal-material-card:hover,
-.about-card:hover,
-.about-profile:hover,
-.contributor-profile:hover,
-.future-contributor:hover,
-.contact-card:hover,
-.about-section:hover,
-.community-section:hover,
-.project-card:hover,
-#education .education-card:hover,
-.card:hover {
-    background: rgba(128, 140, 160, .055) !important;
-    border-color: rgba(128, 140, 160, .3) !important;
-    box-shadow: none !important;
+:root[data-theme="bright"] .portal-card::before,
+:root[data-theme="bright"] .about-profile::before,
+:root[data-theme="bright"] .about-card::before,
+:root[data-theme="bright"] .contributor-profile::before,
+:root[data-theme="bright"] .future-contributor::before,
+:root[data-theme="bright"] .contact-card::before,
+:root[data-theme="bright"] .about-section::before,
+:root[data-theme="bright"] .community-section::before,
+:root[data-theme="bright"] .project-card::before,
+:root[data-theme="bright"] #education .education-card::before,
+:root[data-theme="bright"] .card::before {
+    z-index: 0;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 8% 0%, rgba(150,112,238,.12), transparent 44%),
+                radial-gradient(ellipse at 98% 100%, rgba(68,190,202,.10), transparent 42%),
+                var(--bright-rim);
+    opacity: .55;
 }
-.about-profile .about-photo,
-.contributor-profile .contributor-avatar,
-.future-contributor .future-avatar {
-    border-color: rgba(128, 140, 160, .35) !important;
-    box-shadow: none !important;
+:root[data-theme="bright"] .portal-card > *,
+:root[data-theme="bright"] .about-profile > *,
+:root[data-theme="bright"] .about-card > *,
+:root[data-theme="bright"] .contributor-profile > *,
+:root[data-theme="bright"] .future-contributor > *,
+:root[data-theme="bright"] .contact-card > *,
+:root[data-theme="bright"] .about-section > *,
+:root[data-theme="bright"] .community-section > *,
+:root[data-theme="bright"] .project-card > *,
+:root[data-theme="bright"] #education .education-card > *,
+:root[data-theme="bright"] .card > * {
+    position: relative;
+    z-index: 1;
 }
-.about-card .about-icon,
-.contact-card .contact-icon {
-    background: rgba(128, 140, 160, .055) !important;
-    border-color: rgba(128, 140, 160, .3) !important;
-    box-shadow: none !important;
+:root[data-theme="bright"] .portal-card:hover,
+:root[data-theme="bright"] .portal-material-card:hover,
+:root[data-theme="bright"] .about-card:hover,
+:root[data-theme="bright"] .about-profile:hover,
+:root[data-theme="bright"] .contributor-profile:hover,
+:root[data-theme="bright"] .future-contributor:hover,
+:root[data-theme="bright"] .contact-card:hover,
+:root[data-theme="bright"] .about-section:hover,
+:root[data-theme="bright"] .community-section:hover,
+:root[data-theme="bright"] .project-card:hover,
+:root[data-theme="bright"] #education .education-card:hover,
+:root[data-theme="bright"] .card:hover {
+    box-shadow: 0 20px 42px rgba(49,62,100,.13), 0 5px 14px rgba(49,62,100,.055), inset 0 1px rgba(255,255,255,.98);
 }
+:root[data-theme="bright"] .portal-card,
+:root[data-theme="bright"] .portal-detail-panel,
+:root[data-theme="bright"] .portal-material-card,
+:root[data-theme="bright"] .about-profile,
+:root[data-theme="bright"] .about-card,
+:root[data-theme="bright"] .contributor-profile,
+:root[data-theme="bright"] .future-contributor,
+:root[data-theme="bright"] .contact-card,
+:root[data-theme="bright"] .about-section,
+:root[data-theme="bright"] .community-section,
+:root[data-theme="bright"] .project-card,
+:root[data-theme="bright"] #education .education-card,
+:root[data-theme="bright"] .card {
+    transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+:root[data-theme="bright"] .about-profile .about-photo,
+:root[data-theme="bright"] .contributor-profile .contributor-avatar,
+:root[data-theme="bright"] .future-contributor .future-avatar { border-color: rgba(122,94,190,.24); }
+:root[data-theme="bright"] .about-card .about-icon,
+:root[data-theme="bright"] .contact-card .contact-icon {
+    background: linear-gradient(145deg, rgba(151,119,232,.14), rgba(75,194,209,.12));
+    border-color: rgba(111,85,184,.22);
+}
+
+:root[data-theme="bright"] .portal-action:focus-visible,
+:root[data-theme="bright"] .theme-toggle:focus-visible,
+:root[data-theme="bright"] .portal-card-link:focus-visible,
+:root[data-theme="bright"] .resource-category-link:focus-visible {
+    outline: 3px solid var(--portal-focus);
+    outline-offset: 3px;
+}
+:root[data-theme="bright"] .portal-action:active,
+:root[data-theme="bright"] .theme-toggle:active { filter: brightness(.92); transform: translateY(1px); }
+:root[data-theme="bright"] .portal-action:hover,
+:root[data-theme="bright"] .theme-toggle:hover,
+:root[data-theme="bright"] .portal-action:focus-visible,
+:root[data-theme="bright"] .theme-toggle:focus-visible { color: #fff; }
+:root[data-theme="bright"] .portal-card-link:hover,
+:root[data-theme="bright"] .portal-card-link:focus-visible,
+:root[data-theme="bright"] .portal-footer a:hover,
+:root[data-theme="bright"] .portal-footer a:focus-visible,
+:root[data-theme="bright"] .contact-action:hover,
+:root[data-theme="bright"] .contact-action:focus-visible { color: #312275; }
 
 .theme-toggle {
     display: inline-flex;
