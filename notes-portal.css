@@ -973,3 +973,148 @@ body:has(.portal-nav) .resource-empty {
     filter: grayscale(0.5);
 }
 
+/* =========================================
+   GLOBAL TYPOGRAPHY CONSISTENCY
+   Keep text sizes consistent across sections
+   ========================================= */
+
+:root {
+    --site-font-family: inherit;
+    --site-body-size: 16px;
+    --site-body-line-height: 1.6;
+}
+
+/* Use consistent body text */
+body {
+    font-size: var(--site-body-size);
+    line-height: var(--site-body-line-height);
+}
+
+/* Keep common text elements consistent */
+body p,
+body li,
+body label,
+body input,
+body select,
+body textarea,
+body button {
+    font-size: var(--site-body-size);
+    line-height: var(--site-body-line-height);
+}
+
+/* Keep navigation text consistent */
+.portal-nav a {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Keep main section headings consistent */
+.portal-main > h2,
+.portal-main > section > h2 {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+/* Keep subject and resource card headings consistent */
+.portal-card h3,
+.portal-material-card h3 {
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+/* Keep hero text consistent */
+.portal-hero h1 {
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.2;
+}
+
+.portal-hero .portal-hero-copy {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   SITE-WIDE TYPOGRAPHY — ALL PAGES
+   ========================================== */
+
+:root {
+    --site-font-body: 'Inter', Arial, sans-serif;
+    --site-font-heading: 'Space Grotesk', 'Inter', sans-serif;
+
+    --site-text-size: 16px;
+    --site-text-line-height: 1.7;
+
+    --site-nav-size: 14px;
+    --site-card-heading-size: 18px;
+    --site-section-heading-size: 28px;
+}
+
+/* Consistent font rendering */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--site-font-body);
+    font-size: var(--site-text-size);
+    line-height: var(--site-text-line-height);
+}
+
+/* Common text */
+p,
+li,
+label,
+input,
+select,
+textarea,
+button {
+    font-family: var(--site-font-body);
+    font-size: var(--site-text-size);
+    line-height: var(--site-text-line-height);
+}
+
+/* Navigation */
+body > nav a,
+body > .portal-nav a {
+    font-family: var(--site-font-body);
+    font-size: var(--site-nav-size);
+    line-height: 1.5;
+}
+
+/* Main section headings */
+.portal-main > h2,
+.portal-section-heading,
+main > h2 {
+    font-family: var(--site-font-heading);
+    font-size: var(--site-section-heading-size);
+    line-height: 1.3;
+}
+
+/* Card headings */
+.portal-card h3,
+.portal-material-card h3 {
+    font-family: var(--site-font-heading);
+    font-size: var(--site-card-heading-size);
+    line-height: 1.4;
+}
+
+/* Hero headings */
+body > header h1,
+.portal-hero h1 {
+    font-family: var(--site-font-heading);
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+}
+
+/* Mobile typography */
+@media (max-width: 600px) {
+    :root {
+        --site-text-size: 16px;
+        --site-nav-size: 13px;
+        --site-section-heading-size: 24px;
+        --site-card-heading-size: 18px;
+    }
+}
+
