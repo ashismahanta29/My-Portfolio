@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    const categories = ["Syllabus", "Chapters", "Notes", "PYQs"];
+    const categories = ["Syllabus", "Chapters", "Notes", "Questions"];
     const subjectByPage = {
         "financial-accounting.html": "Financial Accounting",
         "organizational-behaviour.html": "Organizational Behaviour",

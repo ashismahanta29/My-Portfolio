@@ -4,21 +4,21 @@
       "title": "Financial Accounting Syllabus",
       "subject": "Financial Accounting",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Financial Accounting Syllabus.pdf",
+      "path": "notes/Financial Accounting/Syllabus Financial Accounting.pdf",
       "category": "Syllabus"
     },
     {
       "title": "Accounting Principles",
       "subject": "Financial Accounting",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Accounting Principles.pdf",
+      "path": "notes/Financial Accounting/Accounting Principles.pdf",
       "category": "Notes"
     },
     {
       "title": "Depreciation Ind AS 16",
       "subject": "Financial Accounting",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Depreciation ind-16.pdf",
+      "path": "notes/Financial Accounting/Depreciation ind-16.pdf",
       "category": "Notes"
     },
     {
@@ -33,49 +33,49 @@
       "title": "Syllabus OB",
       "subject": "Organizational Behaviour",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Syllabus OB.pdf",
+      "path": "notes/Organizational Behaviour/Syllabus OB.pdf",
       "category": "Syllabus"
     },
     {
       "title": "Chapter 1 OB",
       "subject": "Organizational Behaviour",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Chapter 1 OB.pdf",
+      "path": "notes/Organizational Behaviour/Chapter 1 OB.pdf",
       "category": "Chapters"
     },
     {
       "title": "Chapter 2 OB",
       "subject": "Organizational Behaviour",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Chapter 2 OB.pdf",
+      "path": "notes/Organizational Behaviour/Chapter 2 OB.pdf",
       "category": "Chapters"
     },
     {
       "title": "Chapter 3 OB",
       "subject": "Organizational Behaviour",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Chapter 3 OB (2).pdf",
+      "path": "notes/Organizational Behaviour/Chapter 3 OB (2).pdf",
       "category": "Chapters"
     },
     {
       "title": "Chapter 4 OB",
       "subject": "Organizational Behaviour",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Chapter 4 OB.pdf",
+      "path": "notes/Organizational Behaviour/Chapter 4 OB.pdf",
       "category": "Chapters"
     },
     {
       "title": "Syllabus EVS",
       "subject": "Environmental Studies and Disaster Management",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Syllabus EVS.docx",
+      "path": "notes/EVS/Syllabus EVS.docx",
       "category": "Syllabus"
     },
     {
       "title": "Air & Water Pollution",
       "subject": "Environmental Studies and Disaster Management",
       "contributor": "Ashis Mahanta",
-      "path": "notes/Air & water pollution.pdf",
+      "path": "notes/EVS/Air & water pollution.pdf",
       "category": "Notes"
     },
     {
@@ -84,7 +84,20 @@
       "contributor": "Ashis Mahanta",
       "path": "notes/HRP-03.pdf",
       "category": "Notes"
+    },
+    {
+      "title": "Chapter-01(Business Economics)",
+      "subject": "Introduction to Business Economics",
+      "contributor": "Ashis Mahanta",
+      "path": "notes/Business Economics/Chapter-01(Business Economics).pdf",
+      "category": "Chapters"
+    },
+    {
+      "title": "Chapter-01(Qns)",
+      "subject": "Introduction to Business Economics",
+      "contributor": "Ashis Mahanta",
+      "path": "notes/QNA(Business Economics)/Chapter-01(Qns).pdf",
+      "category": "Questions"
     }
-
   ]
 }
