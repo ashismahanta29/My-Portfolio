@@ -11,9 +11,9 @@ const PAGE_STATUS = {
     "index.html": "available",
     "notes.html": "available",
     "share-notes.html": "available",
-    "contributors.html": "unavailable",
+    "contributors.html": "available",
     "polls.html": "unavailable",
-    "about.html": "unavailable"
+    "about.html": "available"
 };
 
 (function () {
