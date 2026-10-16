@@ -246,9 +246,27 @@ const actionAvailability = {
             target.count.textContent = String(categoryItems.length);
 
             if (categoryItems.length) {
-                categoryItems.forEach(function (item) {
-                    target.list.append(makeCard(item, target.category));
-                });
+                categoryItems
+    .sort(function (a, b) {
+        const orderA = Number.isFinite(Number(a.order))
+            && a.order !== undefined
+            && a.order !== null
+            && a.order !== ""
+            ? Number(a.order)
+            : Infinity;
+
+        const orderB = Number.isFinite(Number(b.order))
+            && b.order !== undefined
+            && b.order !== null
+            && b.order !== ""
+            ? Number(b.order)
+            : Infinity;
+
+        return orderA - orderB;
+    })
+    .forEach(function (item) {
+        target.list.append(makeCard(item, target.category));
+    });
             } else {
                 const empty = document.createElement("p");
                 empty.className = "resource-empty";
