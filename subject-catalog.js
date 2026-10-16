@@ -68,31 +68,46 @@
         return card;
     }
 
-    function setupSection(section) {
-        const category = section.dataset.category;
-        const list = section.querySelector(".resource-list");
-        const title = section.querySelector("h2");
-        if (!categories.includes(category) || !list || !title) return null;
 
-        const panelId = list.id || (section.id + "-list");
-        list.id = panelId;
-        list.classList.add("resource-list-panel");
-        list.setAttribute("aria-labelledby", title.id);
-        list.setAttribute("aria-hidden", "true");
-        list.setAttribute("inert", "");
+function setupSection(section) {
+    const category = section.dataset.category;
+    const list = section.querySelector(".resource-list");
+    const title = section.querySelector("h2");
 
-        const titleText = title.textContent.trim();
-        const toggle = document.createElement("button");
-        toggle.type = "button";
-        toggle.className = "category-toggle";
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-controls", panelId);
-        toggle.setAttribute("aria-label", titleText + ", expand");
-        toggle.innerHTML = "<span class=\"category-title\"></span><span class=\"category-chevron\" aria-hidden=\"true\">›</span>";
-        toggle.querySelector(".category-title").textContent = titleText;
-        title.replaceChildren(toggle);
-        return { category: category, list: list, button: toggle, title: titleText };
-    }
+    if (!categories.includes(category) || !list || !title) return null;
+
+    const panelId = list.id || (section.id + "-list");
+    list.id = panelId;
+    list.classList.add("resource-list-panel");
+    list.setAttribute("aria-labelledby", title.id);
+    list.setAttribute("aria-hidden", "true");
+    list.setAttribute("inert", "");
+
+    const titleText = title.textContent.trim();
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "category-toggle";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", panelId);
+
+    toggle.innerHTML = `
+        <span class="category-title"></span>
+        <span class="category-count" hidden></span>
+        <span class="category-chevron" aria-hidden="true">›</span>
+    `;
+
+    toggle.querySelector(".category-title").textContent = titleText;
+    title.replaceChildren(toggle);
+
+    return {
+        category: category,
+        list: list,
+        button: toggle,
+        title: titleText,
+        count: toggle.querySelector(".category-count")
+    };
+}
+
 
     const targets = sections.map(setupSection).filter(Boolean);
     if (targets.length !== categories.length) {
@@ -112,14 +127,23 @@
 
         targets.forEach(function (target) {
             target.list.replaceChildren();
-            const categoryItems = grouped.get(target.category) || [];
-            if (categoryItems.length) categoryItems.forEach(function (item) { target.list.append(makeCard(item)); });
-            else {
-                const empty = document.createElement("p");
-                empty.className = "resource-empty";
-                empty.textContent = "Resources coming soon. Check back as materials are added.";
-                target.list.append(empty);
-            }
+            
+const categoryItems = grouped.get(target.category) || [];
+
+target.count.textContent = String(categoryItems.length);
+target.count.hidden = false;
+
+if (categoryItems.length) {
+    categoryItems.forEach(function (item) {
+        target.list.append(makeCard(item));
+    });
+} else {
+    const empty = document.createElement("p");
+    empty.className = "resource-empty";
+    empty.textContent = "Resources coming soon. Check back as materials are added.";
+    target.list.append(empty);
+}
+
             target.list.style.maxHeight = target.button.getAttribute("aria-expanded") === "true"
                 ? target.list.scrollHeight + "px"
                 : "0px";

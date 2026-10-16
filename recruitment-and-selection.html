@@ -1,68 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-        (function(){try{var t=localStorage.getItem('my-portfolio-theme');if(t==='bright'){document.documentElement.dataset.theme='bright';document.documentElement.style.colorScheme='light';}else{document.documentElement.dataset.theme='dark';document.documentElement.style.colorScheme='dark';}}catch(e){document.documentElement.dataset.theme='dark';}})();
+
+    <script>
+        (function () {
+            try {
+                var theme = localStorage.getItem("my-portfolio-theme");
+                document.documentElement.dataset.theme =
+                    theme === "bright" ? "bright" : "dark";
+                document.documentElement.style.colorScheme =
+                    theme === "bright" ? "light" : "dark";
+            } catch (error) {
+                document.documentElement.dataset.theme = "dark";
+                document.documentElement.style.colorScheme = "dark";
+            }
+        })();
     </script>
-<title>Recruitment and Selection | Student Notes Hub</title>
+
+    <title>Recruitment and Selection | Student Notes Hub</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="notes-portal.css">
-    <script defer src="subject-catalog.js"></script>
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
     <link rel="stylesheet" href="bright-mode.css">
-    <script defer src="theme.js"></script>
     <link rel="stylesheet" href="polls-feature.css">
+
+    <script>
+        window.va = window.va || function () {
+            (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="theme.js"></script>
+    <script defer src="subject-page.js"></script>
+    <script defer src="subject-catalog.js"></script>
     <script defer src="polls-feature.js"></script>
 </head>
 <body>
-    <nav class="portal-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="share-notes.html">Share Notes</a>
-        <a href="notes.html" aria-current="page">Notes Hub</a>
-        <a href="contributors.html">Contributors</a>
-        <a href="polls.html">Polls</a>
-        <a href="about.html">About Me</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-    <header class="portal-hero">
-        <div class="portal-hero-inner">
-            <p class="portal-kicker">Core 1.4</p>
-            <h1>Recruitment and Selection</h1>
-            <p class="portal-hero-copy">This page lists the materials currently available for Recruitment and Selection.</p>
-        </div>
-    </header>
-    <main class="portal-main portal-detail">
-        <div class="portal-detail-topline"><a class="portal-back-link" href="notes.html"><span aria-hidden="true">←</span><span>Back to Student Notes Hub</span></a></div>
-        <section class="portal-detail-panel" aria-labelledby="materials-heading">
-            <h2 class="portal-section-heading" data-catalog-subject="Recruitment and Selection">Recruitment and Selection</h2>
-            <p class="portal-code">Core 1.4</p>
-            <p class="portal-detail-intro">Browse the materials currently listed for this subject.</p>
-           
-            <section class="resource-section" id="syllabus" aria-labelledby="syllabus-heading" data-category="Syllabus">
-                <h2 id="syllabus-heading">Syllabus</h2>
-                <div class="resource-list" id="syllabus-list"></div>
-            </section>
-            <section class="resource-section" id="chapters" aria-labelledby="chapters-heading" data-category="Chapters">
-                <h2 id="chapters-heading">Chapters</h2>
-                <div class="resource-list" id="chapters-list"></div>
-            </section>
-            <section class="resource-section" id="notes" aria-labelledby="notes-heading" data-category="Notes">
-                <h2 id="notes-heading">Notes</h2>
-                <div class="resource-list" id="notes-list"></div>
-            </section>
-            <section class="resource-section" id="questions" aria-labelledby="questions-heading" data-category="Questions">
-                <h2 id="questions-heading">Questions <span class="portal-code">Previous Year Questions</span></h2>
-                <div class="resource-list" id="questions-list"></div>
-            </section>
-        </section>
-    </main>
-    <footer class="portal-footer"><div class="portal-footer-inner"><p>Student Notes Hub · Made for learning and sharing.</p><p><a href="notes.html">Back to all subjects</a></p></div></footer>
 </body>
 </html>
