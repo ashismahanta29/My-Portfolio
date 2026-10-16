@@ -42,30 +42,37 @@ const SITE_CONTACT_MESSAGE =
             color: #f3f4f6 !important;
         }
 
-        .site-control-screen {
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            padding: 24px;
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(59, 130, 246, .16),
-                    transparent 45%
-                ),
-                #080b14;
-        }
+        
+.site-control-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 32px 24px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(59, 130, 246, .16),
+            transparent 45%
+        ),
+        #080b14;
+}
 
-        .site-control-card {
-            width: 100%;
-            max-width: 580px;
-            padding: 36px 26px;
-            text-align: center;
-            border: 1px solid #293247;
-            border-radius: 22px;
-            background: #111827;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
-        }
+
+        
+.site-control-card {
+    width: 100%;
+    max-width: 480px;
+    flex: 1 1 340px;
+    padding: 36px 26px;
+    text-align: center;
+    border: 1px solid #293247;
+    border-radius: 22px;
+    background: #111827;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
 
         .site-control-card .error-code {
             color: #93c5fd;
@@ -109,6 +116,24 @@ const SITE_CONTACT_MESSAGE =
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(96, 165, 250, .2);
         }
+            
+.site-control-poll-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 13px 22px;
+    border-radius: 12px;
+    background: #3b82f6;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.site-control-poll-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(59, 130, 246, .3);
+}
+
 
         @media (prefers-reduced-motion: reduce) {
             .site-control-card button {
@@ -162,8 +187,32 @@ const SITE_CONTACT_MESSAGE =
         contact.appendChild(emailText);
     }
 
-    card.append(code, heading, explanation, contact);
-    screen.appendChild(card);
+    
+card.append(code, heading, explanation, contact);
+
+// Second card: poll announcement.
+const pollCard = document.createElement("section");
+pollCard.className = "site-control-card";
+
+const pollCode = document.createElement("div");
+pollCode.className = "error-code";
+pollCode.textContent = "STUDENT POLL";
+
+const pollHeading = document.createElement("h1");
+pollHeading.textContent = "Help Bring the Website Back";
+
+const pollExplanation = document.createElement("p");
+pollExplanation.textContent =
+    "The website will return after the student poll is completed. Share your opinion to help decide the next step.";
+
+const pollButton = document.createElement("a");
+pollButton.href = "polls.html#poll-section";
+pollButton.textContent = "Vote in the Poll";
+pollButton.className = "site-control-poll-button";
+
+pollCard.append(pollCode, pollHeading, pollExplanation, pollButton);
+
+screen.append(card, pollCard);
 
     // Remove original content, navigation, forms and page controls.
     document.body.replaceChildren(screen);
@@ -174,16 +223,28 @@ const SITE_CONTACT_MESSAGE =
         event.stopImmediatePropagation();
     };
 
-    ["click", "submit", "reset", "change"].forEach(type => {
-        document.addEventListener(type, blockEvent, true);
-    });
+   
+["click", "submit", "reset", "change"].forEach(type => {
+    document.addEventListener(type, event => {
+        if (
+            event.type === "click" &&
+            event.target instanceof Element &&
+            event.target.closest(".site-control-poll-button")
+        ) {
+            return;
+        }
+
+        blockEvent(event);
+    }, true);
+});
 
     // Prevent normal keyboard activation of website controls.
     document.addEventListener("keydown", event => {
         if (
             event.target.closest &&
             event.target.closest("a, button, input, select, textarea") &&
-            ["Enter", " "].includes(event.key)
+!event.target.closest(".site-control-poll-button") &&
+["Enter", " "].includes(event.key)
         ) {
             blockEvent(event);
         }
