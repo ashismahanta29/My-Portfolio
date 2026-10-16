@@ -12,7 +12,7 @@ const PAGE_STATUS = {
     "notes.html": "available",
     "share-notes.html": "available",
     "contributors.html": "unavailable",
-    "polls.html": "available",
+    "polls.html": "hidden",
     "about.html": "available"
 };
 
