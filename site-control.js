@@ -5,7 +5,7 @@
    ========================================== */
 
 // Change this setting to control the website.
-const SITE_MODE = "deactivated";
+const SITE_MODE = "active";
 
 // Contact details shown during deactivation.
 const SITE_CONTACT_EMAIL = "your-email@example.com";
