@@ -1,4 +1,14 @@
-(function () {
+
+function initialize() {
+    if (document.querySelector('iframe[data-tally-src]')) {
+        loadTallyEmbeds();
+    }
+
+    // Homepage poll invitation popup disabled.
+    // mountInvite();
+}
+
+ ( function () {
     "use strict";
 
     const inviteDismissalKey = "student-hub-home-poll-popup-dismissed-v1";
