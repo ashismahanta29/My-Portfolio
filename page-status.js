@@ -12,7 +12,8 @@ const PAGE_STATUS = {
     "notes.html": "available",
     "share-notes.html": "available",
     "contributors.html": "unavailable",
-    "polls.html": "unavailable"
+    "polls.html": "unavailable",
+    "about.html": "unavailable"
 };
 
 (function () {
