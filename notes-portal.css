@@ -965,3 +965,11 @@ body:has(.portal-nav) .resource-empty {
     color: #6036bd;
     border-color: #d7c7ff;
 }
+
+/* Material actions that are currently unavailable */
+.portal-action-unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+
