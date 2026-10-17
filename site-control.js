@@ -11,6 +11,13 @@ const SITE_MODE = "deactivated";
 const SITE_CONTACT_EMAIL = "your-email@example.com";
 const SITE_CONTACT_MESSAGE =
     "For assistance, please contact the website administrator.";
+    // Separate maintenance poll page.
+// This does not modify the existing polls.html.
+const MAINTENANCE_POLL_PAGE = "maintenance-poll.html";
+
+// Poll countdown: 7 days
+const MAINTENANCE_POLL_DURATION = 7 * 24 * 60 * 60 * 1000;
+const MAINTENANCE_POLL_TIMER_KEY = "maintenance-poll-timer-v2";
 
 (function () {
     "use strict";
@@ -109,6 +116,49 @@ const SITE_CONTACT_MESSAGE =
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(96, 165, 250, .2);
         }
+            .site-control-poll {
+    margin-top: 22px;
+    padding: 22px 18px;
+    border: 1px solid rgba(96, 165, 250, .4);
+    border-radius: 16px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(139, 92, 246, .18),
+            transparent 65%
+        ),
+        #0c1425;
+}
+
+.site-control-poll h2 {
+    margin: 0 0 10px;
+    font-size: 21px;
+}
+
+.site-control-poll-timer {
+    margin: 12px 0;
+    color: #93c5fd !important;
+    font-size: 14px !important;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.site-control-poll-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: #fff !important;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.site-control-poll-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(96, 165, 250, .25);
+}
 
         @media (prefers-reduced-motion: reduce) {
             .site-control-card button {
@@ -162,17 +212,99 @@ const SITE_CONTACT_MESSAGE =
         contact.appendChild(emailText);
     }
 
-    card.append(code, heading, explanation, contact);
-    screen.appendChild(card);
+    // Separate poll invitation for deactivated mode only.
+const pollSection = document.createElement("section");
+pollSection.className = "site-control-poll";
+
+const pollHeading = document.createElement("h2");
+pollHeading.textContent = "Help Improve B.Com Classroom";
+
+const pollMessage = document.createElement("p");
+pollMessage.textContent =
+    "Share your feedback through our community poll.";
+
+const pollLink = document.createElement("a");
+pollLink.className = "site-control-poll-link";
+pollLink.href = MAINTENANCE_POLL_PAGE;
+pollLink.textContent = "Participate in the Poll";
+
+
+const pollTimer = document.createElement("p");
+pollTimer.className = "site-control-poll-timer";
+pollTimer.setAttribute("aria-live", "polite");
+
+pollSection.append(pollHeading, pollMessage, pollTimer, pollLink);
+
+// Start a 7-day countdown for this visitor.
+let pollStartTime = 0;
+
+try {
+    pollStartTime = Number(
+        localStorage.getItem(MAINTENANCE_POLL_TIMER_KEY)
+    );
+
+    if (!pollStartTime || !Number.isFinite(pollStartTime)) {
+        pollStartTime = Date.now();
+        localStorage.setItem(
+            MAINTENANCE_POLL_TIMER_KEY,
+            String(pollStartTime)
+        );
+    }
+} catch (error) {
+    pollStartTime = Date.now();
+}
+
+const pollEndTime = pollStartTime + MAINTENANCE_POLL_DURATION;
+let pollTimerInterval;
+
+function updatePollTimer() {
+    const remaining = pollEndTime - Date.now();
+
+    if (remaining <= 0) {
+        pollSection.remove();
+
+        if (pollTimerInterval) {
+            clearInterval(pollTimerInterval);
+        }
+
+        return false;
+    }
+
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    pollTimer.textContent =
+        `Poll closes in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    return true;
+}
+
+if (updatePollTimer()) {
+    pollTimerInterval = setInterval(updatePollTimer, 1000);
+}
+
+card.append(code, heading, explanation, pollSection, contact);
+screen.appendChild(card);
 
     // Remove original content, navigation, forms and page controls.
     document.body.replaceChildren(screen);
 
     // Block normal website actions without blocking visual hover effects.
-    const blockEvent = event => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-    };
+   const blockEvent = event => {
+    // Allow navigation through the dedicated maintenance poll link.
+    if (
+        event.target.closest &&
+        event.target.closest(".site-control-poll-link")
+    ) {
+        return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+};
 
     ["click", "submit", "reset", "change"].forEach(type => {
         document.addEventListener(type, blockEvent, true);
@@ -180,6 +312,12 @@ const SITE_CONTACT_MESSAGE =
 
     // Prevent normal keyboard activation of website controls.
     document.addEventListener("keydown", event => {
+        if (
+    event.target.closest &&
+    event.target.closest(".site-control-poll-link")
+) {
+    return;
+}
         if (
             event.target.closest &&
             event.target.closest("a, button, input, select, textarea") &&
